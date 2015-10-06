@@ -655,6 +655,7 @@ BEGIN
 END
 ```
 
+<!--
 <!-- section start -->
 <!-- attr: {id: 'working-with-cursors', class: 'slide-section'} -->
 # Working with Cursors 
@@ -679,6 +680,7 @@ WHILE @@FETCH_STATUS = 0
 CLOSE empCursor
 DEALLOCATE empCursor
 ```
+-->
 
 <!-- section start -->
 <!-- attr: {id: 'questions', class: 'slide-section'} -->
