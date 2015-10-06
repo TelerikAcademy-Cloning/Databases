@@ -207,7 +207,7 @@ FROM OPENDATASOURCE('SQLNCLI','Data Source =
 # Operators in SQL Server
 *	Types of operators
 	*	Arithmetic, e.g. `+`, `-`, `*`, `/`
-	*	Comparison, e.g. `=`, `<>`
+	*	Comparison, e.g. `=`, `<`, `>`
 	*	String concatenation (`+`)
 	*	Logical, e.g. `AND`, `OR`, `EXISTS`
 
