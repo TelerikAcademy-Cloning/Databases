@@ -655,33 +655,6 @@ BEGIN
 END
 ```
 
-<!--
-<!-- section start -->
-<!-- attr: {id: 'working-with-cursors', class: 'slide-section'} -->
-# Working with Cursors 
-## Processing Each Record in a Record Set
-
-# Working with Cursors
-```sql
-DECLARE empCursor CURSOR READ_ONLY FOR
-  SELECT FirstName, LastName FROM Employees
-
-OPEN empCursor
-DECLARE @firstName char(50), @lastName char(50)
-FETCH NEXT FROM empCursor INTO @firstName, @lastName
-
-WHILE @@FETCH_STATUS = 0
-  BEGIN
-    PRINT @firstName + ' ' + @lastName
-    FETCH NEXT FROM empCursor 
-    INTO @firstName, @lastName
-  END
-
-CLOSE empCursor
-DEALLOCATE empCursor
-```
--->
-
 <!-- section start -->
 <!-- attr: {id: 'questions', class: 'slide-section'} -->
 # Questions
