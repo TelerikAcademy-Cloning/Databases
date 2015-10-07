@@ -13,9 +13,10 @@ class SqlInjectionDemo
 				CREATE Table Users(
 				UserName varchar(50) not null primary key,
 				PasswordHash varchar(50) not null)
-				INSERT INTO Users VALUES('ivaylo', 'Scsrjm19E1l3mN/yuri312vIHKA=')
-				INSERT INTO Users VALUES('doncho', 'bryliJE42mBnpbd+CHZKchNacT8=')
 				INSERT INTO Users VALUES('niki', 'HZbkIGvqeCrCRsVvWpb/ihxqBs8=')
+				INSERT INTO Users VALUES('doncho', 'bryliJE42mBnpbd+CHZKchNacT8=')
+				INSERT INTO Users VALUES('ivaylo', 'Scsrjm19E1l3mN/yuri312vIHKA=')
+				INSERT INTO Users VALUES('evlogi', 'R4MAfBwDYO7Wut1N+a3RQuj3YE0=')
 			END
 		";
 		SqlCommand cmd = new SqlCommand(sqlPopulateUsersTable, dbConnection);
@@ -56,7 +57,7 @@ class SqlInjectionDemo
 	static void Main()
     {
 		SqlConnection dbConnection = new SqlConnection(
-			"Server=.\\SQLEXPRESS; Database=TelerikAcademy; Integrated Security=true");
+            "Server=.//SQLEXPRESS; Database=TelerikAcademy; Integrated Security=true");
 		dbConnection.Open();
 		using (dbConnection)
 		{
