@@ -86,15 +86,15 @@
         </tr>
         <tr>
             <td>14</td>
-            <td>Database Performance</td>
+            <td>Database Transactions Concepts</td>
             <td>13 October 2015 (Tue)</td>
-            <td>10:30- 14:30</td>
+            <td>10:00- 13:30</td>
         </tr>
         <tr>
             <td>15</td>
-            <td>Database Transactions Concepts</td>
+            <td>Database Performance</td>
             <td rowspan="2">14 October 2015 (Wed)</td>
-            <td rowspan="2">10:30 - 14:30</td>
+            <td rowspan="2">10:00 - 13:30</td>
         </tr>
         <tr>
             <td>16</td>
