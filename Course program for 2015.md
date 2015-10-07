@@ -88,23 +88,29 @@
             <td>14</td>
             <td>Database Performance</td>
             <td>13 October 2015 (Tue)</td>
-            <td>18:00 - 22:00</td>
+            <td>10:30- 14:30</td>
         </tr>
         <tr>
             <td>15</td>
             <td>Database Transactions Concepts</td>
             <td rowspan="2">14 October 2015 (Wed)</td>
-            <td rowspan="2">18:00 - 22:00</td>
+            <td rowspan="2">10:30 - 14:30</td>
         </tr>
         <tr>
             <td>16</td>
             <td>Database Transactions with EF</td>
         </tr>
         <tr>
+            <td>20</td>
+            <td>Exam Preparation</td>
+            <td>16 October 2015 (Fri)</td>
+            <td>10:30 - 16:00</td>
+        </tr>
+        <tr>
             <td>17</td>
             <td>Non Relational Databases</td>
-            <td rowspan="3">16 October 2015 (Fri)</td>
-            <td rowspan="3">10:30 - 18:00</td>
+            <td rowspan="3">19 October 2015 (Mon)</td>
+            <td rowspan="3">18:00 - 22:00</td>
         </tr>
         <tr>
             <td>18</td>
@@ -113,12 +119,6 @@
         <tr>
             <td>19</td>
             <td>Redis and Redis with .NET</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>Exam Preparation</td>
-            <td>19 October 2015 (Mon)</td>
-            <td>14:00 - 20:00</td>
         </tr>
         <tr>
             <td>21</td>
