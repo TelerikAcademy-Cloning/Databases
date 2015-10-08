@@ -207,7 +207,7 @@ FROM OPENDATASOURCE('SQLNCLI','Data Source =
 # Operators in SQL Server
 *	Types of operators
 	*	Arithmetic, e.g. `+`, `-`, `*`, `/`
-	*	Comparison, e.g. `=`, `<>`
+	*	Comparison, e.g. `=`, `<`, `>`
 	*	String concatenation (`+`)
 	*	Logical, e.g. `AND`, `OR`, `EXISTS`
 
@@ -653,31 +653,6 @@ BEGIN
     (FirstName + ' ' + LastName) FROM Employees
   RETURN
 END
-```
-
-<!-- section start -->
-<!-- attr: {id: 'working-with-cursors', class: 'slide-section'} -->
-# Working with Cursors 
-## Processing Each Record in a Record Set
-
-# Working with Cursors
-```sql
-DECLARE empCursor CURSOR READ_ONLY FOR
-  SELECT FirstName, LastName FROM Employees
-
-OPEN empCursor
-DECLARE @firstName char(50), @lastName char(50)
-FETCH NEXT FROM empCursor INTO @firstName, @lastName
-
-WHILE @@FETCH_STATUS = 0
-  BEGIN
-    PRINT @firstName + ' ' + @lastName
-    FETCH NEXT FROM empCursor 
-    INTO @firstName, @lastName
-  END
-
-CLOSE empCursor
-DEALLOCATE empCursor
 ```
 
 <!-- section start -->
