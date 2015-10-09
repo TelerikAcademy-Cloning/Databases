@@ -88,7 +88,7 @@
             <td>14</td>
             <td>Database Transactions Concepts</td>
             <td rowspan="2">13 October 2015 (Tue)</td>
-            <td rowspan="2">10:00- 13:30</td>
+            <td rowspan="2">18:00 - 22:00</td>
         </tr>
         <tr>
             <td>16</td>
@@ -98,7 +98,7 @@
             <td>15</td>
             <td>Database Performance</td>
             <td>14 October 2015 (Wed)</td>
-            <td>10:00 - 13:30</td>
+            <td>18:00 - 22:00</td>
         </tr>
         <tr>
             <td>20</td>
