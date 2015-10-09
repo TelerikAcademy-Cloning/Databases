@@ -84,39 +84,39 @@
             <td>12 October 2015 (Mon)</td>
             <td>18:00 - 22:00</td>
         </tr>
-        <tr>
-            <td>14</td>
+        <tr style="color:#b5434d">
+            <td>15</td>
             <td>Database Transactions Concepts</td>
             <td rowspan="2">13 October 2015 (Tue)</td>
             <td rowspan="2">10:00 - 13:30</td>
         </tr>
-        <tr>
+        <tr style="color:#b5434d">
             <td>16</td>
             <td>Database Transactions with EF</td>
         </tr>
-        <tr>
-            <td>15</td>
+        <tr style="color:#b5434d">
+            <td>14</td>
             <td>Database Performance</td>
             <td>14 October 2015 (Wed)</td>
             <td>10:00 - 13:30</td>
         </tr>
-        <tr>
+        <tr style="color:#b5434d">
             <td>20</td>
             <td>Exam Preparation</td>
             <td>16 October 2015 (Fri)</td>
             <td>10:30 - 16:00</td>
         </tr>
-        <tr>
+        <tr style="color:#b5434d">
             <td>17</td>
             <td>Non Relational Databases</td>
             <td rowspan="3">19 October 2015 (Mon)</td>
             <td rowspan="3">18:00 - 22:00</td>
         </tr>
-        <tr>
+        <tr style="color:#b5434d">
             <td>18</td>
             <td>MongoDB and MongoDB with .NET</td>
         </tr>
-        <tr>
+        <tr style="color:#b5434d">
             <td>19</td>
             <td>Redis and Redis with .NET</td>
         </tr>
