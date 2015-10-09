@@ -87,18 +87,18 @@
         <tr>
             <td>14</td>
             <td>Database Transactions Concepts</td>
-            <td>13 October 2015 (Tue)</td>
-            <td>10:00- 13:30</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>Database Performance</td>
-            <td rowspan="2">14 October 2015 (Wed)</td>
-            <td rowspan="2">10:00 - 13:30</td>
+            <td rowspan="2">13 October 2015 (Tue)</td>
+            <td rowspan="2">10:00- 13:30</td>
         </tr>
         <tr>
             <td>16</td>
             <td>Database Transactions with EF</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Database Performance</td>
+            <td>14 October 2015 (Wed)</td>
+            <td>10:00 - 13:30</td>
         </tr>
         <tr>
             <td>20</td>
