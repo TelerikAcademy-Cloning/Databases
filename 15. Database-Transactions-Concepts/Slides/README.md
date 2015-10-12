@@ -175,7 +175,7 @@
     ROLLBACK;
     ```
 
-#   Transactions inSQL Server: Example
+#   Transactions in SQL Server: Example
 
 *   We have a table with bank accounts:
 
