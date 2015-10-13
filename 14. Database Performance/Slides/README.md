@@ -45,7 +45,7 @@
     * Standard Edition – 64 GB RAM, 16 cores
     * Enterprise Edition –  Operating system maximum
     * Some features are included in enterprise
-  * `SQL Server configuration`
+  * SQL Server configuration
     * Configure database storage and files
     * Configure `tempdb` size and location
     * Not using Microsoft`s defaults
@@ -57,9 +57,10 @@
 * DB performance depends on many factors: -->
   * `Database design`
     * Schema normalization (3rd & 4th normal form?)
+    * Data types
     * Indexes
-    * Constraints
-    * Triggers
+    * Constraints - SQL Server uses them
+    * Triggers - row by row operation = slow
     * Indexed views
     * Table partitioning
     * Physical storage settings
@@ -70,8 +71,8 @@
 * DB performance depends on many factors: -->
   * `Query tuning`
     * Efficient SQL
-    * Use efficiently indexes
-    * Optimize physical I/O
+    * Proper index usage
+    * Optimize physical I/O (real hard disk operations)
   * `Stored procedures tuning`
   * `Application design`
     * E.g. ORM framework, caching, query efficiency, N+1 query problem, batch operations, transactions, etc.
@@ -82,12 +83,14 @@
 ## How to Analyse Query Execution Plans? -->
 
 # Query Execution Plans
+* *How the query optimizer decides to execute your query*
 * The query execution is `serial`
   * SQL Server “compiles” query into a sequential steps which are executed one after the other
 * Individual steps also have internal sequential processing
-  * E.g. table scans are processed one page after another & row by row within page
 * Some steps could be complex, consisting of several sub-steps (like an expression tree)
 * `Execution Plans` visualize these steps
+* Two types of plans: Estimated and Actual
+* Plans are also cached for reuse
 
 <!-- attr: { hasScriptWrapper:true, style:'font-size:0.95em' } -->
 # Execution Plan: Example
@@ -105,7 +108,7 @@ ORDER BY soh.OrderDate DESC
 
 <img class="slide-image" src="imgs/execution.png" style="position:initial; height:180px; margin:-10px 20%" />
 
-* Read execution plans from top right to bottom left
+* Read the plans from right-to-left and top-to-bottom
 
 <!-- attr: { hasScriptWrapper:true, style:'font-size:0.85em' } -->
 # Query Operations
