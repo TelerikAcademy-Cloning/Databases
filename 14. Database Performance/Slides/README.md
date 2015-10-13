@@ -36,20 +36,21 @@
     * Services -> turn off unused services
     * Drivers -> use high-performance devices drivers
     * Network configuration -> maximize throughput
-    * Virtual memory -> `pagefile.sys` on each HDD
+    * Virtual memory -> `pagefile.sys` on separate HDD
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # DB Performance -->
 * DB performance depends on many factors:
   * SQL Server version  
-    * Standard Edition – 2 GB RAM, 4 CPUs
-    * Enterprise Edition –  64 GB RAM, 32 CPUs
+    * Standard Edition – 64 GB RAM, 16 cores
+    * Enterprise Edition –  Operating system maximum
+    * Some features are included in enterprise
   * `SQL Server configuration`
     * Configure database storage and files
     * Configure `tempdb` size and location
+    * Not using Microsoft`s defaults
     * Reinitialize indexes and table fill factor (weekly)
-    * Update statistics (nightly)
-    * Update sysindexes (nightly)
+    * Update statistics and sysindexes (nightly)
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # DB Performance
