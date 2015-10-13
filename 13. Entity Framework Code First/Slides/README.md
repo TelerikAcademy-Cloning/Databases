@@ -321,6 +321,24 @@ protected override void Seed(ForumContext context)
 ## Using Data Annotations and Fluent API -->
 
 # Configure Mappings
+* Entity Framework respects mapping details from two sources
+  * Data annotation attributes in the models
+    * Can be reused for validation purposes
+  * Fluent API code mapping configuration
+    * By overriding `OnModelCreating` method
+    * By using custom configuration classes
+* Use one approach or the other
+
+<!-- attr: { showInPresentation:true } -->
+<!-- # Configure Mappings -->
+* There is a bunch of data annotation attributes in `System.ComponentModel.DataAnnotations`
+  * `[Key]` – specifies the primary key of the table
+  * For validation: [StringLength], [MaxLength], [MinLength], [Required]
+  * Schema: `[Column]`, `[Table]`, `[ComplexType]`, `[ConcurrencyCheck]`, `[Timestamp]`, `[ComplexType]`, `[InverseProperty]`, `[ForeignKey]`, `[DatabaseGenerated]`, `[NotMapped]`, `[Index]`
+* In EF 6 we will be able to add custom attributes by using custom conventions
+
+
+# Fluent API for Mappings
 * By overriding `OnModelCreating` method in `DbContext` class we can specify mapping configurations
 
 ```cs
@@ -338,14 +356,15 @@ protected override void OnModelCreating(
 }
 ```
 
-# Fluent API Configurations
-* .Entity()
+<!-- attr: { showInPresentation:true } -->
+<!-- # Fluent API Configurations -->
+* `.Entity()`
   * Map: Table Name, Schema
   * Inheritance Hierarchies, Complex Types
   * Entity -> Multiple Tables
   * Table -> Multiple Entities
   * Specify Key (including Composite Keys)
-* .Property()
+* `.Property()`
   * Attributes (and Validation)
   * Map: Column Name, Type, Order
   * Relationships
