@@ -106,27 +106,42 @@ ORDER BY soh.OrderDate DESC
 
 * Read execution plans from top right to bottom left
 
+<!-- attr: { hasScriptWrapper:true, style:'font-size:0.85em' } -->
 # Query Operations
 * `Clustered Index Scan` – O(n) operation 
   * Walks through the B-Tree clustered index
   * The data is sorted by the clustered-index key
-* `Index Scan` – O(n) operation
-  * Walks through the B-Tree index
-* `Index Seek` – O(log(n)) operation
-  * Similar performance like `Clustered Index Seek`
-* `Key Lookup` – O(1) operation
+<img class="slide-image" src="imgs/clustered-index-scan.png" style="right:0%; top:13%" />
+                                                         
+* `Index Scan` – O(n) operation                          
+  * Walks through the B-Tree index                       
+<img class="slide-image" src="imgs/index-scan.png" style="right:0%; top:33%" />
+                                                         
+* `Index Seek` – O(log(n)) operation                     
+  * Similar performance like `Clustered Index Seek`      
+<img class="slide-image" src="imgs/index-seek.png" style="right:0%; top:53%" />
+                                                         
+* `Key Lookup` – O(1) operation                          
   * Finds a table record by its ID (read a record)
+<img class="slide-image" src="imgs/key-lookup.png" style="right:0%; top:73%" />
 
+<!-- attr: { hasScriptWrapper:true } -->
 # Join Operations
 * `Nested Loops` – O (n*m) operation
   * Nested “for each row…” operation
+<img class="slide-image" src="imgs/nested-loops.png" style="right:5%; top:13%" />
+
 * `Merge Join` – O (n + m) operation
   * Scans both sides of join in parallel 
   * Ideal for large range scans
   * No sort is required when both columns are indexed
+<img class="slide-image" src="imgs/merge-join.png" style="right:5%; top:33%" />
+
 * `Hash Join` – O (n + m) operation
   * “Hashes” the join column/s from one side of join
   * “Probes” with the other side (the larger)
+<img class="slide-image" src="imgs/hash-join.png" style="right:5%; top:68%" />
+
 
 <!-- attr: { class:'slide-section table-of-contents', showInPresentation:true } -->
 <!-- # Query Execution Plans -->
