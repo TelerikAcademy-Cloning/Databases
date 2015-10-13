@@ -192,11 +192,14 @@ db.SaveChanges();
 #   Transactions in Entity Framework
 ##  [Demo](http://)
 
+<!-- attr: {hasScriptWrapper: true} -->
 #   Optimistic Concurrency in EF
 
+<div>
 *   Enabling optimistic concurrency for a certain property of an entity in EF:
+</div> <!-- .element: style="float: left;width: 50%; text-align: justify" -->
+<img src="imgs/optimistic-concurrency-example.png" /> <!-- .element: style="float: left;border-radius: 15px" -->
 
-    *   Insert an image
 
 <!-- attr: {style: 'font-size:38px'} -->
 #   `OptimisticConcurrencyException`
