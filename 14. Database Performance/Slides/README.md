@@ -207,20 +207,10 @@ ORDER BY soh.OrderDate DESC
   * `Foreign keys` are almost always good candidates for indexes
 * You need to scan large tables fast (millions of records) - `Columnstore`
 
-<!--- attr: { showInPresentation:true } -->
-<!-- # Add Index When -->
-* The values in the intermediate node can answer the query without going to the leaf node
-  * E.g. in `WHERE` + `JOIN`
-* The values in the column must be unique (avoid duplicates)
-  * Primary key constraints always create an index
-  * Unique key constraints always create an index
-* The values of a column group is used to split into categories
-  * Especially in the `GROUP BY` clause
-
 # How Many Indexes?
 * Adding non-clustered indexes to a table can greatly speed-up SELECT statements
 * Every index has a certain amount of overhead
-  * The greater the number of indexes, the more overhead with every INSERT, UPDATE, and DELETE statements
+  * The greater the number of indexes, the more overhead with every INSERT, UPDATE and DELETE
 * Must balance the needs of the application with the pros and cons of added indexes
   * OLTP -> less indexes (more modify, less read)
     * Online Transaction Processing (Standard DB)
