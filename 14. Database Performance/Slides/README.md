@@ -157,6 +157,7 @@ ORDER BY soh.OrderDate DESC
 * `Indexes` speed up searching of values in a certain column or group of columns
   * Provide fast data access in `log(N)` steps
   * Usually implemented as B-trees
+    * SQL Server 2012 introduces `Columnstore` indexes
 * Insert / update / delete of records in indexed tables is slower!
   * Useful for big tables (50 000+ rows)
 * Indexes can be built-in the table (`clustered`) or stored externally (`non-clustered`)
@@ -204,7 +205,7 @@ ORDER BY soh.OrderDate DESC
 * Search by certain column/s (`WHERE` clause)
 * Data within the column is used to build joins
   * `Foreign keys` are almost always good candidates for indexes
-* The data in the column is needed in the same order every time it is retrieved (`ORDER BY`)
+* You need to scan large tables fast (millions of records) - `Columnstore`
 
 <!--- attr: { showInPresentation:true } -->
 <!-- # Add Index When -->
