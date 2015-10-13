@@ -24,10 +24,11 @@
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   Using Transactions in ADO.NET
 ##    `TransactionScope` and more
 
-#   Using Transactions in ADO.NET
+#   Transactions in ADO.NET
 
 *   Working with transactions in ADO.NET:
     *   Begin a transaction:
@@ -38,42 +39,40 @@
         ```cs
         sqlCommand.Transaction = trans;
         ```
-    *   Commit a transaction:
+    *   Commit/abort a transaction
         ```cs
         trans.Commit();
-        ```
-    *   Abort transaction:
-        ```cs
         trans.Rollback();
         ```
 
+<!-- attr: {style: "40px"} -->
+#   Transactions in ADO.NET
+
 *   The level of isolation is specified by the enumeration `IsolationLevel`:
     *   `ReadUncommitted`, `ReadCommitted`, `RepeatRead`, `Serializable`, `Snapshot`, `Chaos`
-    *   _Example:_
 
     ```cs
     var trans = dbCon.BeginTransaction(IsolationLevel.ReadCommitted);
     SqlCommand cmd = dbCon.CreateCommand();
     cmd.Transaction = trans;
-
-    try
-    {
+    try {
       // Perform some SQL commands here …
       trans.Commit();
     }
-    catch (SqlException e)
-    {
+    catch (SqlException e) {
       Console.WriteLine("Exception: {0}", e.Message);
       trans.Rollback();
       Console.WriteLine("Transaction cancelled.");
     }
     ```
 
+<!-- attr: {class: 'slide-section'} -->
 #   ADO.NET Transactions
 ##  [Demo](http://)
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   Transactions with `TransactionScope`
 ##    Easier way to create transactions
 
@@ -86,6 +85,9 @@
     *   Easier to implement
     *   More efficient
     *   Supports distributed transactions (MSDTC)
+
+#   `TransactionScope` Class
+
 *   When instantiating `TransactionScope`:
     *   You either join the existing (ambient) transaction
     *   Or create a new ambient transaction
@@ -94,14 +96,19 @@
     *   If there is an open existing transaction
     *   The value of the `TransactionScopeOption` parameter
 
+<!-- attr: {style: "font-size:40px"} -->
+#   `TransactionScope` Class
+
 *   `TransactionScopeOption` specifies which transaction to be used (new / existing / none)   
 
-| `TransactionScopeOption` | Transaction exists? | Action                                |
+| Value | Exists? | Action                                |
 | -----------------------  | ------------------- | ------------------------------------- |
 | `Require` (default)      | No                  | New transaction is created            |
 | `Require` (default)      | Yes                 | Existing ambient transaction is used  |
 | `RequiresNew`            | Yes/No              | New transaction is explicitly created |
 | `Suppress`               | Yes/No              | No transaction is used at all         |
+
+#   `TransactionScope` Example
 
 *   `TransactionScope` _Example:_
 
@@ -129,7 +136,7 @@ void SomeMethod()
 *   `RootMethod()` creates a new transaction
 *   `SomeMethod()` joins the existing transaction
 
-#   Completing a `TransactionScope`
+#   Completing a Transaction
 
 *   The method `Complete()` informs the transactions coordinator that it is acceptable to commit the transaction
     *   If not called, the transaction will be rolled back
@@ -137,15 +144,18 @@ void SomeMethod()
 *   At the end of the using block of the root transaction, it is committed
     *   Only if the root transaction and all joined transactions have called `Complete()`
 
+<!-- attr: {class: 'slide-section'} -->
 #   Using `TransactionScope`
 ##  [Demo](http://)
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   Transactions in Entity Framework
 ##  Even more user-friendly
 
-#   Transactions in Entity Framework (EF)
+<!-- attr: {style: 'font-size:40px'} -->
+#   Transactions in Entity Framework
 
 *   In Entity Framework `ObjectContext.SaveChanges()` always operations in a transaction
     *   Either all changes are persisted, or none of them
@@ -155,17 +165,18 @@ void SomeMethod()
         *   Conflicts can be resolved by `ObjectContext. Refresh(StoreWins / ClientWins)`
 *   `TransactionScope` can be used in EF as well
 
+#   Transactions in EF: Example
+
 *   _Example:_
+
 ```cs
 var db = new NorthwindEntities();
-
 // Add a valid new category
 var newCategory = new Category() {
   CategoryName = "New Category",
   Description = "New category, just for testing"
 };
 db.Categories.AddObject(newCategory);
-
 // Add an invalid new category
 var newCategoryLongName = new Category() {
   CategoryName = "New Category Loooooooong Name",
@@ -177,6 +188,7 @@ db.Categories.AddObject(newCategoryLongName);
 db.SaveChanges();
 ```
 
+<!-- attr: {class: 'slide-section'} -->
 #   Transactions in Entity Framework
 ##  [Demo](http://)
 
@@ -186,7 +198,8 @@ db.SaveChanges();
 
     *   Insert an image
 
-#   `OptimisticConcurrencyException` Example
+<!-- attr: {style: 'font-size:38px'} -->
+#   `OptimisticConcurrencyException`
 
 *   Example of using optimistic concurrency:
 
@@ -211,7 +224,9 @@ newCategory.CategoryName = newCategory.CategoryName + " 3";
 db.SaveChanges();
 ```
 
-#   Optimistic Concurrency in EF
+<!-- attr: {class: 'slide-section'} -->
+#   Optimistic Concurrency in Entity Framework
+##  [Demo](http:)
 
 <!-- section start -->
 
