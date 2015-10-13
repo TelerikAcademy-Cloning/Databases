@@ -154,7 +154,7 @@ ON Messages(MsgPrice)
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 
 SELECT * FROM Messages
-WHERE MsgPrice > 1500 and MsgPrice < 1600
+WHERE MsgPrice > 1000 and MsgPrice < 2000
 
 DROP INDEX IDX_Messages_MsgPrice ON Messages
 
@@ -291,11 +291,11 @@ CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 SELECT m.MsgId, m.MsgText, m.MsgDate, m.MsgPrice, a.AuthorName
 FROM dbo.Messages m JOIN dbo.Authors a 
   ON m.AuthorId = a.AuthorId
-AND m.MsgDate BETWEEN '1-Jan-2012' AND '31-Jan-2012'
+AND m.MsgDate BETWEEN '1-Jan-2015' AND '28-Feb-2015'
 AND m.MsgPrice < 100000
 
 -- Create a cache-table to hold the result from a certain SELECT
-CREATE TABLE CacheOfMsgCheapJan2012
+CREATE TABLE CacheOfMsgCheapJan2015
 (
 	MsgId int PRIMARY KEY,
 	MsgText nvarchar(300),
@@ -306,93 +306,18 @@ CREATE TABLE CacheOfMsgCheapJan2012
 
 -- Rebuild the cache (call this at certain intervals)
 BEGIN TRANSACTION
-DELETE FROM CacheOfMsgCheapJan2012
-INSERT INTO CacheOfMsgCheapJan2012
+DELETE FROM CacheOfMsgCheapJan2015
+INSERT INTO CacheOfMsgCheapJan2015
 SELECT m.MsgId, m.MsgText, m.MsgDate, m.MsgPrice, a.AuthorName
 FROM dbo.Messages m JOIN dbo.Authors a 
   ON m.AuthorId = a.AuthorId
-AND m.MsgDate BETWEEN '1-Jan-2012' AND '31-Jan-2012'
+AND m.MsgDate BETWEEN '1-Jan-2015' AND '31-Jan-2015'
 AND m.MsgPrice < 100000
 COMMIT
 
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 
 -- Selecting from the cache is very fast
-SELECT * FROM CacheOfMsgCheapJan2012
+SELECT * FROM CacheOfMsgCheapJan2015
 
-DROP TABLE CacheOfMsgCheapJan2012
-
-
----------------------------------------------------------------------
--- Example of table partitioning in MySQL
----------------------------------------------------------------------
-
-CREATE DATABASE PartitioningDB;
-
-USE PartitioningDB;
-
-CREATE TABLE Authors(
-  AuthorId int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  AuthorName varchar(100)
-);
-
-INSERT INTO Authors(AuthorName) VALUES
-  ('Nikolay Kostov'), ('Doncho Minkov'), ('Ivaylo Kenov'), ('Evlogi Hristov');
-
-CREATE TABLE Messages(
-  MsgId int NOT NULL AUTO_INCREMENT,
-  AuthorId int NOT NULL,
-  MsgText nvarchar(300),
-  MsgDate datetime,
-  PRIMARY KEY (MsgId, AuthorId)
-) PARTITION BY HASH(AuthorId) PARTITIONS 3;
-
-INSERT INTO Messages(AuthorId, MsgText, MsgDate) VALUES
-  (1, 'Some text', NOW()), (2, 'Another text', NOW()),
-  (3, 'Third msg', NOW()), (2, 'Fourth msg', NOW());
-
-SELECT * FROM Messages
-WHERE AuthorId = 2;
-
-EXPLAIN PARTITIONS SELECT * FROM Messages;
-
-EXPLAIN PARTITIONS SELECT * FROM Messages WHERE AuthorId = 2;
-
-
-DROP TABLE Messages;
-
-CREATE TABLE Messages(
-  MsgId int NOT NULL AUTO_INCREMENT,
-  MsgText nvarchar(300),
-  MsgDate datetime,
-  PRIMARY KEY (MsgId, MsgDate)
-) PARTITION BY RANGE(YEAR(MsgDate)) (
-    PARTITION p0 VALUES LESS THAN (1990),
-    PARTITION p1 VALUES LESS THAN (1995),
-    PARTITION p2 VALUES LESS THAN (2000),
-    PARTITION p3 VALUES LESS THAN (2005),
-    PARTITION p4 VALUES LESS THAN MAXVALUE
-);
-
-INSERT INTO Messages(MsgText, MsgDate) VALUES
-  ('Some text', '2003-8-11'),
-  ('Some text', '1985-7-25'),
-  ('Some text', '2011-3-31'),
-  ('Some text', '1992-1-1'),
-  ('Some text', '1994-9-21'),
-  ('Some text', '2013-1-31'),
-  ('Some text', '2012-1-31'),
-  ('Some text', '2004-7-27'),
-  ('Some text', '2008-1-24');
-
-SELECT * FROM Messages PARTITION (p0);
-SELECT * FROM Messages PARTITION (p1);
-SELECT * FROM Messages PARTITION (p2);
-SELECT * FROM Messages PARTITION (p3);
-SELECT * FROM Messages PARTITION (p4);
-
--- Select from all partitions
-SELECT * FROM Messages;
-
--- Select from a single partition
-SELECT * FROM Messages WHERE YEAR(MsgDate) > 2005;
+DROP TABLE CacheOfMsgCheapJan2015
