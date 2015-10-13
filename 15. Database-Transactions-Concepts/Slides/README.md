@@ -28,6 +28,7 @@
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   What is a Transaction?
 ##  And why they are a must-have
 
@@ -36,7 +37,7 @@
 *   Transactions is a sequence of actions (database operations) executed as a whole:
     *   Either all of them complete successfully
     *   Or none of the them
-* __Example__ of transaction:
+* _Example_ of transaction:
     *   A bank transfer from one account into another (withdrawal + deposit)
     *   If either the withdrawal or the deposit fails the whole operation is cancelled
 
@@ -53,25 +54,20 @@
 
 #   Transactions: Example
 
-<div>
-  *   Withdraw $100
-      1.   Read current balance
-      *   New balance = current - $100
-      *   Write new balance
-      *   Dispense cash
-
-</div> <!-- style="float:left; width:50%" -->
-
-<div style="float:left; width:50%">
-  *   Transfer $100
-      *   Read savings
-      *   New savings =current - $100
-      *   Read checking
-      *   New checking =current  + $100
-      *   Write savings
-      *   Write checking
-
-</div> <!-- style="float:left; width:50%" -->
+*   Withdraw $100
+    1.   Read current balance
+    *   New balance = current - $100
+    *   Write new balance
+    *   Dispense cash
+<!-- attr: {showInPresentation: true} -->
+<!-- #   Transactions: Example -->
+*   Transfer $100
+    *   Read savings
+    *   New savings = current - $100
+    *   Read checking
+    *   New checking = current  + $100
+    *   Write savings
+    *   Write checking
 
 #   What Can Go Wrong Without Transactions?
 
@@ -84,6 +80,7 @@
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   ACID Transactions
 ##    Atomicity, Consistency, Isolation, Durability
 
@@ -150,8 +147,10 @@
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   Managing Transactions in SQL Language
 
+<!-- attr: {style: 'font-size:40px'} -->
 #   Transactions and SQL
 
 *   Start a transaction
@@ -162,7 +161,7 @@
 
     *   Some RDBMS use implicit start, e.g. Oracle
 *   Ending a transaction:
-    *   **Complete a successful** transaction and persist all changes maked    
+    *   **Complete a successful** transaction and persist all changes
 
     ```sql
     COMMIT;
@@ -185,7 +184,9 @@ CREATE TABLE Accounts(
   Balance decimal NOT NULL)
 ```
 
-*   We use a transaction to transfer money from one account into another:
+<!-- attr: {style: 'font-size: 36px'} -->
+#   Transactions in SQL Server: Example
+*   A transaction for transferring money:
 
 ```sql
 CREATE PROCEDURE sp_Transfer_Funds(
@@ -194,36 +195,33 @@ CREATE PROCEDURE sp_Transfer_Funds(
   @amount MONEY) AS
 BEGIN
   BEGIN TRAN;  //or BEGIN TRANSACTION
-
   UPDATE Accounts set Balance = Balance - @amount
   WHERE ID = @from_account;
-
   if @@ROWCOUNT <> 1
   BEGIN
     ROLLBACK;
     RAISERROR('Invalid source Account!', 16, 1);
     RETURN;
   END;
-
   UPDATE Accounts SET Balance = Balance + @amount
   WHERE Id = @to_account;
-
   if @@ROWCOUNT <> 1
   BEGIN
     ROLLBACK;
     RAISERROR("Invalid destination account", 16, 1);
     RETURN;
   END;
-
   COMMIT;
 END;
 ```
 
-#   Transfer Funds
+<!-- attr: {class: 'slide-section'} -->
+#   Transferrring Funds
 ##    [Demo](http://)
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   Concurrency Problems in Database Systems
 
 #   Scheduling Transactions
@@ -238,6 +236,7 @@ END;
         *   access the same piece of data
         *   at least one of the transactions does a write operation to that piece of data
 
+<!-- attr: {style: 'font-size: 40px'} -->
 #   Serial Schedule – Example
 
 *   T1:	Adds $50 to the balance
@@ -265,14 +264,22 @@ END;
 *   Serializability is too expensive
     *   Optimistic locking allows better concurrency
 
+<!-- section start -->
+
+<!-- attr: {class: 'slide-section'} -->
 #   Problems from Conflicting Operations
 
-#   **Dirty Read**
+#   Dirty Read
 
 *   **Dirty Read** is:
-  *   A transaction updates an item, then fails
-  *   The item is accessed by another transaction before the rollback
-  *   The second transaction reads invalid data
+    *   A transaction updates an item, then fails
+    *   The item is used before the rollback
+    *   The second transaction reads invalid data
+
+<!-- attr: {style: 'font-size: 40px'} -->
+#   Dirty Ready Example
+
+*   Dirty Read Example
 
 | Time | Transaction | Step               | Value |
 | ---- | ----------- | ------------------ | ----- |
@@ -285,7 +292,6 @@ END;
 | 7    | T2          | Write balance      | 125   |
 
 *   Update from T1 was rolled back, but T2 doesn’t know about it, so finally the balance is incorrect
-
 
 #   Non-Repeatable Read
 
@@ -301,12 +307,16 @@ END;
     *   And gets a different number of rows
     *   Due to another transaction inserted new rows in the meantime
 
+<!-- attr: {style: 'font-size: 40px'} -->
 #   Lost Update
 
 *   Lost Update consists of
     *   Two transactions update the same item
     *   The second update overwrites the first
     *   Last update wins
+
+<!-- attr: {style: "font-size: 40px"} -->
+#   Lost Update Example
 
 | Time | Transaction | Step                   | Value |
 | ---- | ----------- | ---------------------- | ----- |
@@ -330,6 +340,7 @@ END;
 
 <!-- section start -->
 
+<!-- attr: {class: "slide-section"} -->
 #   Concurrency Control Techniques
 
 #   Concurrency Control
@@ -353,6 +364,7 @@ END;
     *   Transactions wait for each other
     *   Low concurrency – does not scale well
 
+<!-- attr: {style: "font-size: 45px"} -->
 #   Optimistic Concurrency
 
 *   Optimistic concurrency control (optimistic locking) means no locking
@@ -369,10 +381,11 @@ END;
         *   Reads DB, perform computations, store the results in memory
     2.   Validate
         *   Check for conflicts in the database
-        *   In case of conflict  resolve it / discard changes
+        *   In case of conflict - resolve it / discard changes
     3.  Write
         *   Changes are made persistent to DB
 
+<!-- attr: {style: "font-size: 35px"} -->
 #   Optimistic Concurrency Example
 
 1.   Read the data from DB:
@@ -415,6 +428,7 @@ END;
         *   Locks prevent another transactions from modifying item
             *   Or even read it with with a write lock
 
+<!-- attr: {style: "font-size: 40px"} -->
 #    Locking - Basic Rules
 
 *   If a transaction has a read lock on an item
@@ -443,11 +457,11 @@ END;
 
 #     Dealing with Deadlocks
 
-*   Deadlock prevention
+*   **Deadlock prevention**
     *   Transactions can't obtain a new lock, if the possibility of a deadlock exists
-*   Deadlock avoidance
-    *   Transactions must obtain
-*   Deadlock detection and recovery
+*   **Deadlock avoidance**
+    *   Transaction must obtain all the locks it needs upfront (before it starts)
+*   **Deadlock detection and recovery**
     *   DB checks for possible deadlocks
     *   If deadlock is detected, one of the transactions is killed and an exceptions is thrown
 
@@ -476,11 +490,13 @@ END;
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'}  -->
 #   Transaction Isolation Levels
 
+<!-- attr: {style: 'font-size: 35px'}  -->
 #   Transactions and Isolation
 
-*   Transactions can define different isolation levels for themselves:
+*   Transactions can define different isolation levels:
 
 | Level of isolation | Dirty reads | Repeatable reads | Phantom reads |
 | ------------------ | ----------- |----------------- |-------------- |
@@ -496,7 +512,7 @@ END;
 
 #   Isolation Levels
 
-*   **Uncommitted Read**
+*   **Read Uncommitted**
     *   Reads everything, even data not committed by some other transaction
     *   No data is locked
     *   Not commonly used
@@ -504,6 +520,9 @@ END;
     *   Current transaction sees only committed data
     *   Records retrieved by a query are not prevented from modification by some other transaction
     *   Default behavior in most databases
+
+#   Isolation Levels
+
 *   **Repeatable Read**
     *   Records retrieved cannot be changed from outside
     *   The transaction acquires read locks on all retrieved data, but does not acquire range locks (phantom reads may occur)
@@ -512,6 +531,7 @@ END;
     *   Acquires a range lock on the data
     *   Simultaneous transactions are actually executed one after another
 
+<!-- attr: {style: 'font-size: 40px'} -->
 #     Snapshot Isolation in SQL Server
 
 *   By default MS SQL Server applies pessimistic concurrency control
@@ -524,18 +544,17 @@ END;
 
     *   It enables optimistic concurrency control
     *   When some transaction updates some data, all other transactions see the old data (snapshot)
-    *   No locking is applied  no waiting transactions
+    *   No locking is applied - no waiting transactions
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'}  -->
 #   Transaction Log and Recovery after Crash
 
 #   Transaction Log
 
 *   What is **transaction log** (REDO log)?
     *   Keep a log of all database writes ON DISK (so that it is still available after crash)
-        *   `<transaction ID>; <data item>; <new value>`
-        *   `(Tj; x=125)  (Ti; y=56)`
         *   Actions must be idempotent (undoable / redoable)
     *   But don't write to the database yet
 
@@ -543,10 +562,6 @@ END;
         *   Add `commit <transaction ID>` to the log
         *   Do all the writes to the database
         *   Add `complete <transaction ID>` to the log
-
-#    Sample Transaction Log
-
-*   TODO (slide 49)
 
 #   Recovering From a Crash
 
@@ -561,8 +576,8 @@ END;
 
 <!-- section start -->
 
+<!-- attr: {class: 'slide-section'} -->
 #   When and how to use transactions?
-##    TODO
 
 #   Transactions Usage
 
