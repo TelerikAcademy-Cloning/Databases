@@ -84,11 +84,8 @@
 
 # Query Execution Plans
 * *How the query optimizer decides to execute your query*
-* The query execution is `serial`
-  * SQL Server “compiles” query into a sequential steps which are executed one after the other
-* Individual steps also have internal sequential processing
-* Some steps could be complex, consisting of several sub-steps (like an expression tree)
 * `Execution Plans` visualize these steps
+* Some steps could be complex, consisting of several sub-steps (like an expression tree)
 * Two types of plans: Estimated and Actual
 * Plans are also cached for reuse
 
