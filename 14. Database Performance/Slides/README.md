@@ -84,7 +84,7 @@
 
 # Query Execution Plans
 * *How the query optimizer decides to execute your query*
-* `Execution Plans` visualize these steps
+* `Execution Plans` visualize these steps ([Icons](https://msdn.microsoft.com/en-us/library/ms175913.aspx))
 * Some steps could be complex, consisting of several sub-steps (like an expression tree)
 * Two types of plans: Estimated and Actual
 * Plans are also cached for reuse
