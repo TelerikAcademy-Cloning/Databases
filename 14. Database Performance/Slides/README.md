@@ -36,29 +36,31 @@
     * Services -> turn off unused services
     * Drivers -> use high-performance devices drivers
     * Network configuration -> maximize throughput
-    * Virtual memory -> `pagefile.sys` on each HDD
+    * Virtual memory -> `pagefile.sys` on separate HDD
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # DB Performance -->
 * DB performance depends on many factors:
   * SQL Server version  
-    * Standard Edition – 2 GB RAM, 4 CPUs
-    * Enterprise Edition –  64 GB RAM, 32 CPUs
-  * `SQL Server configuration`
+    * Standard Edition – 64 GB RAM, 16 cores
+    * Enterprise Edition –  Operating system maximum
+    * Some features are included in enterprise
+  * SQL Server configuration
     * Configure database storage and files
     * Configure `tempdb` size and location
+    * Not using Microsoft`s defaults
     * Reinitialize indexes and table fill factor (weekly)
-    * Update statistics (nightly)
-    * Update sysindexes (nightly)
+    * Update statistics and sysindexes (nightly)
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # DB Performance
 * DB performance depends on many factors: -->
   * `Database design`
     * Schema normalization (3rd & 4th normal form?)
+    * Data types
     * Indexes
-    * Constraints
-    * Triggers
+    * Constraints - SQL Server uses them
+    * Triggers - row by row operation = slow
     * Indexed views
     * Table partitioning
     * Physical storage settings
@@ -69,8 +71,8 @@
 * DB performance depends on many factors: -->
   * `Query tuning`
     * Efficient SQL
-    * Use efficiently indexes
-    * Optimize physical I/O
+    * Proper index usage
+    * Optimize physical I/O (real hard disk operations)
   * `Stored procedures tuning`
   * `Application design`
     * E.g. ORM framework, caching, query efficiency, N+1 query problem, batch operations, transactions, etc.
@@ -81,12 +83,11 @@
 ## How to Analyse Query Execution Plans? -->
 
 # Query Execution Plans
-* The query execution is `serial`
-  * SQL Server “compiles” query into a sequential steps which are executed one after the other
-* Individual steps also have internal sequential processing
-  * E.g. table scans are processed one page after another & row by row within page
+* *How the query optimizer decides to execute your query*
+* `Execution Plans` visualize these steps ([Icons](https://msdn.microsoft.com/en-us/library/ms175913.aspx))
 * Some steps could be complex, consisting of several sub-steps (like an expression tree)
-* `Execution Plans` visualize these steps
+* Two types of plans: Estimated and Actual
+* Plans are also cached for reuse
 
 <!-- attr: { hasScriptWrapper:true, style:'font-size:0.95em' } -->
 # Execution Plan: Example
@@ -104,7 +105,7 @@ ORDER BY soh.OrderDate DESC
 
 <img class="slide-image" src="imgs/execution.png" style="position:initial; height:180px; margin:-10px 20%" />
 
-* Read execution plans from top right to bottom left
+* Read the plans from right-to-left and top-to-bottom
 
 <!-- attr: { hasScriptWrapper:true, style:'font-size:0.85em' } -->
 # Query Operations
@@ -156,6 +157,7 @@ ORDER BY soh.OrderDate DESC
 * `Indexes` speed up searching of values in a certain column or group of columns
   * Provide fast data access in `log(N)` steps
   * Usually implemented as B-trees
+    * SQL Server 2012 introduces `Columnstore` indexes
 * Insert / update / delete of records in indexed tables is slower!
   * Useful for big tables (50 000+ rows)
 * Indexes can be built-in the table (`clustered`) or stored externally (`non-clustered`)
@@ -203,22 +205,12 @@ ORDER BY soh.OrderDate DESC
 * Search by certain column/s (`WHERE` clause)
 * Data within the column is used to build joins
   * `Foreign keys` are almost always good candidates for indexes
-* The data in the column is needed in the same order every time it is retrieved (`ORDER BY`)
-
-<!--- attr: { showInPresentation:true } -->
-<!-- # Add Index When -->
-* The values in the intermediate node can answer the query without going to the leaf node
-  * E.g. in `WHERE` + `JOIN`
-* The values in the column must be unique (avoid duplicates)
-  * Primary key constraints always create an index
-  * Unique key constraints always create an index
-* The values of a column group is used to split into categories
-  * Especially in the `GROUP BY` clause
+* You need to scan large tables fast (millions of records) - `Columnstore`
 
 # How Many Indexes?
 * Adding non-clustered indexes to a table can greatly speed-up SELECT statements
 * Every index has a certain amount of overhead
-  * The greater the number of indexes, the more overhead with every INSERT, UPDATE, and DELETE statements
+  * The greater the number of indexes, the more overhead with every INSERT, UPDATE and DELETE
 * Must balance the needs of the application with the pros and cons of added indexes
   * OLTP -> less indexes (more modify, less read)
     * Online Transaction Processing (Standard DB)
