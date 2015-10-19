@@ -22,9 +22,9 @@
 
 <!-- section start -->
 
-<!-- attr: {class: 'slide-section'} -->
-#   NoSQL Databases
-##    Overview, Models, Concepts, Examples
+<!-- attr: {class: 'slide-section', showInPresentation: true} -->
+<!-- #   NoSQL Databases
+##    Overview, Models, Concepts, Examples -->
 
 #   Relational vs. NoSQL Databases
 
