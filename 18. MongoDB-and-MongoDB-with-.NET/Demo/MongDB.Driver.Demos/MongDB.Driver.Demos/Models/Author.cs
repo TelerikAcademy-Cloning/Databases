@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MongDB.Driver.Demos.Models
+﻿namespace MongDB.Driver.Demos.Models
 {
     public class Author
     {

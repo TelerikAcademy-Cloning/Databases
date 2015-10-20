@@ -1,10 +1,9 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
-
-namespace MongDB.Driver.Demos.Models
+﻿namespace MongDB.Driver.Demos.Models
 {
-    internal class Book : IEntity
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
+    public class Book : IEntity
     {
         public Book(string title, string isbn, Author patrickRothfuss)
         {

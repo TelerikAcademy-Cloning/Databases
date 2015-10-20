@@ -1,8 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
-
-namespace MongDB.Driver.Demos.Models
+﻿namespace MongDB.Driver.Demos.Models
 {
     public interface IEntity
     {

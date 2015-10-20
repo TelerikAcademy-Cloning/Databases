@@ -1,14 +1,14 @@
-﻿using System;
-using System.Linq;
-using MongDB.Driver.Demos;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using System.Threading.Tasks;
-using MongoDB.Bson.Serialization;
-using MongDB.Driver.Demos.Models;
-
-namespace MongDB.Driver.Demos.Repositories
+﻿namespace MongDB.Driver.Demos.Repositories
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using MongoDB.Driver;
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization;
+
+    using MongDB.Driver.Demos.Models;
+
     internal class MongoDbRepository<T> : IRepository<T>
            where T : IEntity
     {

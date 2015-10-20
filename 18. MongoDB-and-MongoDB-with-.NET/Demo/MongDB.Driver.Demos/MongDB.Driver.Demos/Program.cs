@@ -1,15 +1,12 @@
-﻿using MongDB.Driver.Demos.Models;
-using MongDB.Driver.Demos.Repositories;
-using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
-namespace MongDB.Driver.Demos
+﻿namespace MongDB.Driver.Demos
 {
+    using System;
+    using System.Linq;
+
+    using MongDB.Driver.Demos.Models;
+    using MongDB.Driver.Demos.Repositories;
+    using MongoDB.Driver;
+
     public class StartUp
     {
         private static IMongoDatabase GetDatabase(string connectionString, string dbName)
@@ -60,7 +57,7 @@ namespace MongDB.Driver.Demos
         private static string[] ReadInput()
         {
             string[] input = new string[4];
-            string[] messages = { "Title: ", "ISBN: ", "Author first name:", "Author last name" };
+            string[] messages = { "Title: ", "ISBN: ", "Author first name: ", "Author last name: " };
             Console.WriteLine("Save a book:");
             for (int i = 0; i < messages.Length; i++)
             {

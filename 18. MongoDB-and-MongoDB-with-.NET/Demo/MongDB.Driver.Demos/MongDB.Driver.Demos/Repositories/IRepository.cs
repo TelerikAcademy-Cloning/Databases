@@ -1,10 +1,10 @@
-﻿using MongDB.Driver.Demos.Models;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MongDB.Driver.Demos.Repositories
+﻿namespace MongDB.Driver.Demos.Repositories
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using MongDB.Driver.Demos.Models;
+
     public interface IRepository<T>
         where T : IEntity
     {
