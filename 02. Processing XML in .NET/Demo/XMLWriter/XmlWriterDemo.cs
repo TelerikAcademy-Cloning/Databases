@@ -19,8 +19,8 @@ class XmlWriterDemo
             writer.WriteAttributeString("name", "My Library");
             WriteBook(writer, "Code Complete",
                 "Steve McConnell", "155-615-484-4");
-            WriteBook(writer, "Въведение в програмирането със C#",
-                "Светлин Наков и колектив", "954-775-305-3");
+            WriteBook(writer, "Р’СЉРІРµРґРµРЅРёРµ РІ РїСЂРѕРіСЂР°РјРёСЂР°РЅРµС‚Рѕ СЃСЉСЃ C#",
+                "РЎРІРµС‚Р»РёРЅ РќР°РєРѕРІ Рё РєРѕР»РµРєС‚РёРІ", "954-775-305-3");
             WriteBook(writer, "Writing Solid Code",
                 "Steve Maguire", "155-615-551-4");
             writer.WriteEndDocument();
