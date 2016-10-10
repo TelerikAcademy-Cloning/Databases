@@ -1,6 +1,6 @@
 # Databases
 
-Repository for the course [Databases](http://telerikacademy.com/Courses/Courses/Details/387) at [Telerik Academy](https://telerikacademy.com)
+Repository for the course [Databases](http://telerikacademy.com/Courses/Courses/Details/388) at [Telerik Academy](https://telerikacademy.com)
 
 ## Course program
 
