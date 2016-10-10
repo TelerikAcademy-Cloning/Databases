@@ -1,1 +1,0 @@
-Add direct serialization from XML to C# class with XMLSerializer - http://stackoverflow.com/questions/9260184/how-to-convert-complex-xml-to-net-class
