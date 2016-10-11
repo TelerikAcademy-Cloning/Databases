@@ -30,7 +30,7 @@
 
 # What is XML
 * `XML` (e`X`tensible `M`arkup `L`anguage)
-  * Universal language (notation) for describing structured data using text with tags
+  * Universal language (notation) for describing structured data using **text with tags**
   * The data is stored together with the meta-data about it
   * Used to describe other languages (formats) for data representation
 * XML looks like HTML
@@ -163,7 +163,7 @@
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<country:towns 
+<country:towns
     xmlns:country="urn:academy-com:country"
     xmlns:town="http://www.academy.com/towns/1.0">
   <town:town>
@@ -231,7 +231,7 @@
 * `XML schemas` describes:
   * Possible attributes and tags and their values
   * Tags order
-  * Default values and number of appearances 
+  * Default values and number of appearances
 * There are few XML Schema standards:
   * `DTD` – Document Type Definition
   * `XSD` – XML Schema Definition Language
@@ -253,7 +253,7 @@
 ```
 
 # XSD Schemas
-* `XSD` (`X`ML `S`chema `D`efinition Language) 
+* `XSD` (`X`ML `S`chema `D`efinition Language)
   * Powerful XML-based language for describing the structure of XML documents
   * Contains a set of rules for the tags and their attributes in a document
   * Specifies few standard data types
@@ -276,7 +276,7 @@
             <xs:attribute name="name"
                 type="xs:string" use="optional"/>
         </xs:complexType>
-    </xs:element> 
+    </xs:element>
 ```
 
 <!-- attr: { showInPresentation:true, hasScriptWrapper:true } -->
@@ -327,7 +327,7 @@
 ```
 
 <!-- attr: { hasScriptWrapper:true } -->
-# Visual Studio Schema Editor 
+# Visual Studio Schema Editor
 * Visual Studio can generate XSD Schemas from the structure of a given XML document
 * VS has powerful XSD Schema Editor
   * Visually edit schemas
@@ -354,10 +354,10 @@
 # XML Working Models
 * They have several working models:
   * `DOM` (Document Object Model)
-    * Represents XML documents as a tree in the memory 
-    * Allows processing and modifying the document 
+    * Represents XML documents as a tree in the memory
+    * Allows processing and modifying the document
   * `SAX` (Simple API for XML Processing)
-    * Reads XML documents consequently tag by tag
+    * Reads XML documents consequently element by element
     * Event-driven API
     * Allows analyzing the read portions at each step
   * `StAX` (Streaming API for XML)
@@ -439,7 +439,7 @@
 * `/` – addresses the root element `derived`
 * `/someNode` – addresses all nodes with name "someNode", straight inheritors to the root
 * `/books/book` – addresses all nodes  "book", straight inheritors to the node "books"
-* `/books/book[price<10]/author` – addresses all authors (`/books/book/author`), whose books have price < 10 
+* `/books/book[price<10]/author` – addresses all authors (`/books/book/author`), whose books have price < 10
 * `/items/item[@type="food"]` – addresses all nodes with name item (`/items/item/`), which have attribute "`type`" with value "`food`"
 
 <!-- section start -->
