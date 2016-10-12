@@ -449,7 +449,7 @@
 *	Your main program logic should be a C# application (a set of modules, executed sequentially one after another).
 *	Use non-commercial library to read the ZIP file.
 *	For reading the Excel 2003 files (.xls) use ADO.NET (without ORM or third-party libraries).
-*	MySQL should be accessed through OpenAccess ORM (research it).
+*	MySQL should be accessed through Telerik® Data Access ORM (research it).
 *	SQL Server should be accessed through Entity Framework.
 *	You are free to use "code first" or "database first" approach or both for the ORM frameworks.
 *	For the PDF export use a non-commercial third party framework.
