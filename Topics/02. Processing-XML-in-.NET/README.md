@@ -82,7 +82,7 @@ foreach (XmlNode node in rootNode.ChildNodes)
   * `XmlDocument`
     * Represents the DOM tree
     * Usually contains two elements:
-      * Header part (prolog) 
+      * Header part (prolog)
       * The root element of the XML document
   * `XmlNode`
     * Abstract base class for all nodes in a DOM tree
@@ -118,11 +118,11 @@ foreach (XmlNode node in rootNode.ChildNodes)
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # The XmlNode Class -->
-* * `Attributes – returns the node attributes as XmlAttributeCollection
-  * `InnerXml, OuterXml – returns the part of the XML containing the current node
+* * `Attributes` – returns the node attributes as `XmlAttributeCollection`
+  * `InnerXml`, `OuterXml` – returns the part of the XML containing the current node
     * Respectively with or without the node itself
-  * `InnerText – concatenation of the values of the node and its inheritors
-  * `NodeType – returns the node type
+  * `InnerText` – concatenation of the values of the node and its inheritors
+  * `NodeType` – returns the node type
 
 <!-- attr: { showInPresentation:true } -->
 <!-- # The XmlNode Class -->
@@ -150,7 +150,7 @@ foreach (XmlNode node in rootNode.ChildNodes)
 <!-- attr: { showInPresentation:true } -->
 <!-- # The XmlDocument Class -->
 * Important properties, methods and events:
-  * `PreserveWhitespace` – indicates if the white space to be kept during save or load
+  * `PreserveWhitespace` – indicates whether the white space to be kept during save or load
   * `CreateElement(…)`, `CreateAttribute(…)`, `CreateTextNode(…)` – creates new XML element, attribute or value for the element
   * `NodeChanged`, `NodeInserted`, `NodeRemoved` – events for tracking the changes in the document
 
@@ -224,7 +224,7 @@ using (XmlReader reader = XmlReader.Create("items.xml"))
 * `XmlWriter` is an abstract class
   * Instantiated by that static method Create(…)
   * Implements `IDisposable`
-  
+
 ```cs
 using (var writer = new XmlTextWriter ("items.xml"))
 {
@@ -280,7 +280,7 @@ static void Main()
   XmlDocument xmlDoc = new XmlDocument();
   xmlDoc.Load("../../items.xml");
   string xPathQuery = "/items/item[@type='beer']";
-        
+
   XmlNodeList beersList =
     xmlDoc.SelectNodes(xPathQuery);
   foreach (XmlNode beerNode in beersList)
@@ -314,7 +314,7 @@ static void Main()
     * The most fundamental class in LINQ to XML
     * Important methods: `Parse`, `Save`, `RemoveAtributes`, `SetElementValue`, `SetAtributeValue`, `WriteTo`
   * `XAttribute` – name/  value attribute pair
-  * `XName` – tag name + optional namespace – `{namespace}localname` 
+  * `XName` – tag name + optional namespace – `{namespace}localname`
   * `XNamespace` – XML namespace
 
 <!-- attr: { hasScriptWrapper:true } -->
@@ -332,7 +332,7 @@ static void Main()
 * Need to create this XML fragment?
 
 ```cs
-XElement books = 
+XElement books =
   new XElement("books",
     new XElement("book",
       new XElement("author", "Don Box"),
@@ -394,7 +394,7 @@ foreach (var book in books)
 * XSL transformations (XSLT)
   * Convert a XML document to another XML document with different structure
   * Can convert XML to any text format
-  * Can be used to transform XML documents to XHTML
+  * Can be used to transform XML documents to HTML5
 * XSLT depends on XPath
   * For matching sections from the input document and replacing them with other text
 
