@@ -11,7 +11,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: {id: 'table-of-contents', class:'table-of-contents'} -->
+<!-- attr: {} -->
 # Table of Contents
 * Processing XML documents in .NET
   * [Using the DOM Parser](#the-dom-parser)
