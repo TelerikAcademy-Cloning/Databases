@@ -11,7 +11,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: {id: 'table-of-contents', class:'table-of-contents' } -->
+<!-- attr: {id: 'table-of-contents' } -->
 # Table of Contents
 *   [ORM Technologies – Basic Concepts](#orm-technologies)
 *   [Entity Framework – Overview](#overview-of-ef)

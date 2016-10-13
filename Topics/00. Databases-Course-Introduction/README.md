@@ -68,8 +68,6 @@
 - **Homework peer review** - up to `5%`
 - **Team work** - up to `15%`
 - **Attendance** - up to `5%`
-- **Bonus** - up to `10%`
-  - **Helping students** in **C#** and **HTML** courses - up to `10%`
 
 # Pass / Excellence / Fail Criteria
 
