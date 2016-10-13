@@ -12,7 +12,7 @@
 
 <!-- section start -->
 
-<!-- attr: {id: 'table-of-contents', class:'table-of-contents'} -->
+<!-- attr: {id: 'table-of-contents'} -->
 # Table of Contents
 
 *   What is a Transaction?

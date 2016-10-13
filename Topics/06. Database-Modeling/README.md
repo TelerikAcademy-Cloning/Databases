@@ -128,7 +128,7 @@ photo and date.
 	*	`timestamp` – automatically generated number whenever a change is made to the data row
 	*	`uniqueidentifier` – GUID identifier
 	*	`xml` – data in XML format
-<img class="slide-image" src="imgs/data-types.png" style="left:0%; bottom:5%;" /> 
+<img class="slide-image" src="imgs/data-types.png" style="left:0%; bottom:5%;" />
 
 # Data Types in SQL Server
 *	`Nullable` and `NOT NULL` types
@@ -148,7 +148,7 @@ photo and date.
 # Connecting to SQL Server
 *	When starting SSMS a window pops up
 *	Usually it is enough to just click the "Connect" button without changing anything
-<img class="slide-image" src="imgs/sql-connect.png" style="left:27%; bottom:5%;" /> 
+<img class="slide-image" src="imgs/sql-connect.png" style="left:27%; bottom:5%;" />
 
 # Working with Object Explorer
 *	`Object Explorer` is the main tool to use when working with the database and its objects
@@ -161,12 +161,12 @@ photo and date.
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating a New Database
 *	In Object Explorer we go to the "Databases" and choose "New Database…" from the context menu
-<img class="slide-image" src="imgs/new-database.png" style="left:17%; bottom:8%;" /> 
+<img class="slide-image" src="imgs/new-database.png" style="left:17%; bottom:8%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating a New Database
 *	In the "New Database" window enter the name of the new database and click `[OK]`
-<img class="slide-image" src="imgs/new-database2.png" style="left:15%; bottom:5%; height:60%;" /> 
+<img class="slide-image" src="imgs/new-database2.png" style="left:15%; bottom:5%; height:60%;" />
 
 <!-- section start -->
 <!-- attr: {id: 'creating-diagrams', class: 'slide-section'} -->
@@ -188,17 +188,17 @@ photo and date.
 # Creating Tables
 *	If the database doesn't show immediately in Object Explorer perform "Refresh" [F5]
 *	Creating new table:
-<img class="slide-image" src="imgs/create-table.png" style="left:2%; bottom:2%;" /> 
+<img class="slide-image" src="imgs/create-table.png" style="left:2%; bottom:2%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
 *	Enter table name  and define the table columns (name and type):
-<img class="slide-image" src="imgs/create-table2.png" style="left:2%; bottom:2%;" /> 
+<img class="slide-image" src="imgs/create-table2.png" style="left:2%; bottom:2%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
-*	Defining a primary key 
-<img class="slide-image" src="imgs/create-table3.png" style="left:2%; bottom:2%;" /> 
+*	Defining a primary key
+<img class="slide-image" src="imgs/create-table3.png" style="left:2%; bottom:2%;" />
 
 # Creating Tables
 *	Defining an identity columns
@@ -210,20 +210,20 @@ photo and date.
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
 *	Setting an identity through the "Column Properties" window
-<img class="slide-image" src="imgs/create-table4.png" style="left:15%; bottom:5%; height:60%;" /> 
+<img class="slide-image" src="imgs/create-table4.png" style="left:15%; bottom:5%; height:60%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
 *	It is a good practice to set the name of the table at the time it is created
 	*	Use the "Properties" window
 	*	If it's not visible use "`View`" > "`Properties Window`" or press `[F4]`
-<img class="slide-image" src="imgs/create-table5.png" style="left:60%; bottom:2%; height:50%;" /> 
+<img class="slide-image" src="imgs/create-table5.png" style="left:60%; bottom:2%; height:50%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
 *	When closing the window for the table, SSMS asks whether to save the table
 	*	You can do it manually by choosing “`Save Table`” from the “`File`” menu or by pressing `Ctrl + S`
-<img class="slide-image" src="imgs/create-table6.png" style="left:20%; bottom:7%; height:40%;" /> 
+<img class="slide-image" src="imgs/create-table6.png" style="left:20%; bottom:7%; height:40%;" />
 
 <!-- attr: { class: 'slide-section' } -->
 # Database Modeling with SQL Server Management Studio
@@ -233,12 +233,12 @@ photo and date.
 # Creating Relationships
 *	To create one-to-many relationship drag the foreign key column onto the other table
 	*	Drag from the child table to the parent table
-<img class="slide-image" src="imgs/create-relations.png" style="left:10%; bottom:5%; height:50%;" /> 
+<img class="slide-image" src="imgs/create-relations.png" style="left:10%; bottom:5%; height:50%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Self-Relationships
 *	Self-relationship can be created by dragging a foreign key onto the same table
-<img class="slide-image" src="imgs/self-relation.png" style="left:5%; bottom:5%; height:60%;" /> 
+<img class="slide-image" src="imgs/self-relation.png" style="left:5%; bottom:5%; height:60%;" />
 
 <!-- section start -->
 <!-- attr: {id: 'naming', class: 'slide-section'} -->

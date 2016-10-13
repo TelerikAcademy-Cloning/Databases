@@ -19,7 +19,7 @@
 	*	SQL Server Management Studio
 	*	Moving a SQL Server Database
 		*	Through Backups and Restore
-		*	By Detaching and Attaching 
+		*	By Detaching and Attaching
 
 # Table of Contents
 *	`MySQL` – Intro
@@ -164,7 +164,7 @@
 * In the next dialog click the `[Search]` button
 	*	Select one of the Windows accounts in a typical Windows fashion
 	*	Leave the authentication method set to Windows authentication
-	*	Click `[OK]`	
+	*	Click `[OK]`
 *	Thus you create an SQL Server User account
 	*	Account permissions could be assigned later
 *	Windows administrators already have access
@@ -175,7 +175,7 @@
 1.	Assign the roles for this user
 1.	Click `[OK]` to confirm
 	*	By selecting the `[Name-of-Database]` > `Properties` > `Permissions` you can also set specific permissions for the accounts
-	
+
 <!-- attr: {class: 'slide-section'} -->
 # Creating Accounts and Assigning Permissions in SQL Server
 ## Live Demo
@@ -238,9 +238,9 @@
 # MySQL Community Server
 *	MySQL Community Server
 	*	The free open-source MySQL edition
-	*	Windows: 
+	*	Windows:
 		*	Pre-packaged installer available from [MySQL](http://dev.mysql.com/downloads/mysql/)
-	*	Linux: 
+	*	Linux:
 		*	Available through the package managers
 			*	`apt-get install mysql-server`
 			*	`yum install mysql-server`

@@ -11,7 +11,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: {id:'table-of-contents', class:'table-of-contents'} -->
+<!-- attr: {id:'table-of-contents'} -->
 # Table of Contents
 *   Transact-SQL Programming Language
 	*	[Data Definition Language](#data-definition-language-ddl)
