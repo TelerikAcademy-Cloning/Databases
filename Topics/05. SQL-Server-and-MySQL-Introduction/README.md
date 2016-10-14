@@ -12,14 +12,14 @@
 <!-- section start -->
 <!-- attr: {id: 'table-of-contents'} -->
 # Table of Contents
-*  `SQL Server 2012` – Intro
+*  `SQL Server 2014` – Intro
 	*	SQL Server Services
 	*	Types of Databases
 	*	Authentication and Permissions
 	*	SQL Server Management Studio
 	*	Moving a SQL Server Database
 		*	Through Backups and Restore
-		*	By Detaching and Attaching 
+		*	By Detaching and Attaching
 
 # Table of Contents
 *	`MySQL` – Intro
@@ -40,16 +40,18 @@
 *	`MS SQL Server` is a Relational Database Management System (RDBMS) from Microsoft
 	*	The main language supported in SQL Server is Transact SQL (T-SQL), an extension of SQL
 	*	Powerful, trustworthy, easy-to-use DB server
-*	The most recent version is SQL Server 2014
+*	The most recent version is SQL Server 2016
 *	Works only on Windows systems
-*	A free distribution exists (SQL Server Express)
+*	A free distributions exists 
+		- SQL Server Express
+		- SQL Server Developer Edition
 	*	http://www.microsoft.com/express/database/
 
 <!-- section start -->
 <!-- attr: {id: 'sql-server-services', class: 'slide-section'} -->
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 *	SQL Server – the database engine
 	*	Responsible for database management, data storage, queries, data manipulation, data integrity, transactions, locking, users, security
 	*	Executes SQL / T-SQL queries
@@ -58,7 +60,7 @@
 	*	Monitors SQL Server
 	*	Sends notifications about problems
 
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 *	Distributed Transaction Coordinator (MSDTC)
 	*	Manages database transactions
 	*	Supports transactions that span multiple databases
@@ -164,7 +166,7 @@
 * In the next dialog click the `[Search]` button
 	*	Select one of the Windows accounts in a typical Windows fashion
 	*	Leave the authentication method set to Windows authentication
-	*	Click `[OK]`	
+	*	Click `[OK]`
 *	Thus you create an SQL Server User account
 	*	Account permissions could be assigned later
 *	Windows administrators already have access
@@ -175,7 +177,7 @@
 1.	Assign the roles for this user
 1.	Click `[OK]` to confirm
 	*	By selecting the `[Name-of-Database]` > `Properties` > `Permissions` you can also set specific permissions for the accounts
-	
+
 <!-- attr: {class: 'slide-section'} -->
 # Creating Accounts and Assigning Permissions in SQL Server
 ## Live Demo
@@ -238,16 +240,16 @@
 # MySQL Community Server
 *	MySQL Community Server
 	*	The free open-source MySQL edition
-	*	Windows: 
+	*	Windows:
 		*	Pre-packaged installer available from [MySQL](http://dev.mysql.com/downloads/mysql/)
-	*	Linux: 
+	*	Linux:
 		*	Available through the package managers
 			*	`apt-get install mysql-server`
 			*	`yum install mysql-server`
 
 # MySQL Storage Engines
 *	`MyISAM`
-	*	Fast, non-transactional  unreliable, forget it!
+	*	Fast, non-transactional, unreliable, forget it!
 *	`InnoDB`
 	*	Fully ACID transactional, highly reliable
 	*	Recommended for most applications

@@ -11,7 +11,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: {id:'table-of-contents', class:'table-of-contents', style:'font-size:0.9em' } -->
+<!-- attr: {id:'table-of-contents', style:'font-size:0.9em' } -->
 # Table of Contents
 *   [Data Access Models](#data-access-models)
     *   [Connected](#connected-model)

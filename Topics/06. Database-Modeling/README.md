@@ -128,6 +128,7 @@
   - `timestamp` – automatically generated number whenever a change is made to the data row
   - `uniqueidentifier` – GUID identifier
   - `xml` – data in XML format
+
 <img class="slide-image" src="imgs/data-types.png" style="left:0%; bottom:5%;" />
 
 # Data Types in SQL Server
@@ -178,6 +179,7 @@
 </div>
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating a New Database
+
 - In the "New Database" window enter the name of the new database and click `[OK]`
 
 <div style="text-align: center">
@@ -241,6 +243,7 @@
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Tables
+
 - Defining a primary key
   1.  Left-click on the small column, before the **Column name** column
   2.  Select **Set Primary Key**
@@ -277,22 +280,21 @@
 </ul>
 
 
-<div style="text-align: center">
-</div>
-
 <!-- attr: { class: 'slide-section' } -->
 # Database Modeling with SQL Server Management Studio
 ## Creating Relationships between Tables
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Creating Relationships
-- To create one-to-many relationship drag the foreign key column onto the other table
-  - Drag from the child table to the parent table
+*	To create one-to-many relationship drag the foreign key column onto the other table
+	*	Drag from the child table to the parent table
+
 <img class="slide-image" src="imgs/create-relations.png" style="left:10%; bottom:5%; height:50%;" />
 
 <!-- attr: { hasScriptWrapper: true } -->
 # Self-Relationships
-- Self-relationship can be created by dragging a foreign key onto the same table
+*	Self-relationship can be created by dragging a foreign key onto the same table
+
 <img class="slide-image" src="imgs/self-relation.png" style="left:5%; bottom:5%; height:60%;" />
 
 <!-- section start -->

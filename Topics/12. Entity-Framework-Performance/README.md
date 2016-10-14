@@ -10,7 +10,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: { id:'table-of-contents', class:'table-of-contents' } -->
+<!-- attr: { id:'table-of-contents' } -->
 # Table of Contents
 * [SQL Profilers](#what-is-sql-profiler)
 * [The N+1 Query Problem](#the-n1-query-problem)

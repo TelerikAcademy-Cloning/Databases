@@ -10,7 +10,7 @@
 </div>
 
 <!-- section start -->
-<!-- attr: {id: 'table-of-contents', class:'table-of-contents'} -->
+<!-- attr: {id: 'table-of-contents'} -->
 # Table of Contents
 *   [Modeling Workflow](#modeling-workflow)
 *   [Code First Main Parts](#domain-classes---models)
