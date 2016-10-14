@@ -12,7 +12,7 @@
 <!-- section start -->
 <!-- attr: {id: 'table-of-contents'} -->
 # Table of Contents
-*  `SQL Server 2012` – Intro
+*  `SQL Server 2014` – Intro
 	*	SQL Server Services
 	*	Types of Databases
 	*	Authentication and Permissions
@@ -40,16 +40,18 @@
 *	`MS SQL Server` is a Relational Database Management System (RDBMS) from Microsoft
 	*	The main language supported in SQL Server is Transact SQL (T-SQL), an extension of SQL
 	*	Powerful, trustworthy, easy-to-use DB server
-*	The most recent version is SQL Server 2014
+*	The most recent version is SQL Server 2016
 *	Works only on Windows systems
-*	A free distribution exists (SQL Server Express)
+*	A free distributions exists 
+		- SQL Server Express
+		- SQL Server Developer Edition
 	*	http://www.microsoft.com/express/database/
 
 <!-- section start -->
 <!-- attr: {id: 'sql-server-services', class: 'slide-section'} -->
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 *	SQL Server – the database engine
 	*	Responsible for database management, data storage, queries, data manipulation, data integrity, transactions, locking, users, security
 	*	Executes SQL / T-SQL queries
@@ -58,7 +60,7 @@
 	*	Monitors SQL Server
 	*	Sends notifications about problems
 
-# Services of SQL Server 2012
+# Services of SQL Server 2014
 *	Distributed Transaction Coordinator (MSDTC)
 	*	Manages database transactions
 	*	Supports transactions that span multiple databases
@@ -247,7 +249,7 @@
 
 # MySQL Storage Engines
 *	`MyISAM`
-	*	Fast, non-transactional  unreliable, forget it!
+	*	Fast, non-transactional, unreliable, forget it!
 *	`InnoDB`
 	*	Fully ACID transactional, highly reliable
 	*	Recommended for most applications
