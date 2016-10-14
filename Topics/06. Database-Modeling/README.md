@@ -38,7 +38,7 @@
 	1.	Defining other constraints
 	1.	Filling test data in the tables
 
-<!-- attr: {style: 'font-size:0.9em'} -->
+<!-- attr: {style: 'font-size:0.85em'} -->
 # Identification of Entities
 - Entity tables represent objects from the real world
 - Most often they are nouns in the specification
@@ -61,7 +61,7 @@
   - **Photo** (`binary block`)
   - **Date of enlistment** (`date`)
 
-<!-- attr: {style:'font-size: 0.9em'} -->
+<!-- attr: {style:'font-size: 0.85em'} -->
 # Identification of the Columns
 - Columns are clarifications for the entities in the text of the specification, for example:
 
@@ -74,7 +74,7 @@
 - Students have the following characteristics:
   - **Name**, **faculty number**, **photo**, **date of enlistment** and a **list of courses** they visit
 
-<!-- attr: {style: 'font-size: 0.95em'} -->
+<!-- attr: {style: 'font-size: 0.9em'} -->
 # How to Choose a Primary Key?
 - Always define an additional column for the primary key
   - Don't use an existing column (for example SSN)
