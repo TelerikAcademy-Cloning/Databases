@@ -75,7 +75,7 @@
   - **Name**, **faculty number**, **photo**, **date of enlistment** and a **list of courses** they visit
 
 <!-- attr: {style: 'font-size: 0.9em'} -->
-# How to Choose a Primary Key?
+# Choosing a Primary Key?
 - Always define an additional column for the primary key
   - Don't use an existing column (for example SSN)
   - Preferable to be an `integer number`
