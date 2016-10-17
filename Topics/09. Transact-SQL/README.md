@@ -174,7 +174,7 @@ GO
 
 # Data Types in SQL Server
 *	Numbers, e.g. `int`
-*	Dates, e.g. `datatime`
+*	Dates, e.g. `datetime`
 *	Characters, e.g. `varchar`
 *	Binary, e.g. `image`
 *	Unique Identifiers (GUID)
@@ -294,7 +294,7 @@ IF (@n BETWEEN 4 and 6)
    BEGIN
     SELECT @n AS 'Number',
       CASE
-        WHEN (@n % 2) = 1
+        WHEN (@n % 2) = 0
           THEN 'EVEN'
         ELSE 'ODD'
       END AS 'Type'
@@ -628,7 +628,7 @@ RETURN (
 *	Calling the function with a parameter
 
 ```sql
-SELECT * FROM fn_CustomerNamesInRegion(N'WA')
+SELECT * FROM fn_CustomerNamesInRegion('WA')
 ```
 
 <!-- attr: { id:'multi-statement-table-valued-functions' } -->
