@@ -111,7 +111,7 @@ ORDER BY ProductName
 	*	Switch the active database
 *	`GO`
 	*	Separates batches (sequences of commands)
-*	`EXEC(<command>)`
+*	`EXEC(&lt;command>)`
 	*	Executes a user-defined or system function stored procedure, or an extended stored procedure
 	*	Can supply parameters to be passed as input
 	*	Can execute SQL command given as string
