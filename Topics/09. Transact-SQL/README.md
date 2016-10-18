@@ -635,7 +635,7 @@ SELECT * FROM fn_CustomerNamesInRegion('WA')
 # Multi-Statement Table-Valued Functions
 *	`BEGIN` and `END` enclose multiple statements
 *	`RETURNS` clause –  specifies table data type
-*	`RETURNS` clause – names and defines the table
+*	`RETURN` clause – names and defines the table
 
 # Multi-Statement Table-Valued Function – Example
 ```sql
