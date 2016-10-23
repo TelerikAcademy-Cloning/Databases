@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace XPathNavigatorDemo
 {
-    class Program
+    class XPathNavigatorDemo
     {
         static void Main(string[] args)
         {
