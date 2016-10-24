@@ -20,7 +20,6 @@
 *   [Using Code First Migrations](#code-first-migrations)
 *   [Configure Mappings](#configure-mappings)
 *   [LINQPad](#linqpad)
-*   [Repository Pattern](#repository-pattern)
 
 <!-- section start -->
 <!-- attr: {id: 'modeling-workflow', class: 'slide-section', showInPresentation:true} -->
@@ -387,22 +386,6 @@ protected override void OnModelCreating(
 
 <!-- attr: { class:'slide-section table-of-contents',showInPresentation:true } -->
 <!-- # LINQpad -->
-## [Demo]()
-
-<!-- section start -->
-<!-- attr: {id: 'repository-pattern', class: 'slide-section', showInPresentation:true} -->
-<!-- # Repository Pattern -->
-
-# Repository Pattern
-* Gives abstraction over the data layer
-* Single place to make changes to your data access
-* Single place responsible for a set of tables
-* Easily replaceable by other implementations
-* Hides the details in accessing data
-* Can be implemented in various ways
-
-<!-- attr: { class:'slide-section table-of-contents',showInPresentation:true } -->
-<!-- # Repository Pattern -->
 ## [Demo]()
 
 <!-- section start -->
