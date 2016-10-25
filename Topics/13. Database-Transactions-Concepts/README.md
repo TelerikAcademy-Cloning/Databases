@@ -184,7 +184,7 @@ CREATE TABLE Accounts(
   Balance decimal NOT NULL)
 ```
 
-<!-- attr: {style: 'font-size: 36px'} -->
+<!-- attr: {style: 'font-size: 0.8em'} -->
 #   Transactions in SQL Server: Example
 *   A transaction for transferring money:
 
