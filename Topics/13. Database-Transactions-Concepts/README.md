@@ -121,15 +121,15 @@
 
 *   Isolation means that
     *   Multiple transactions running at the same time do not impact each other's execution
-    *   Transactions don't see othertransaction's uncommitted changes
-    *   **Isolation level** defines how deep transactions isolate from one another
+    *   Transactions don't see other transaction's uncommitted changes
+    *   **Isolation level** defines how deep transactions isolate from one another
 *   _Isolation example:_
     *   Manager can see the transferred funds on one account or the other, but never on both
 
 #   Durability
 
 *   Durability means that
-    *   If a transaction is committed it becomes persistent
+    *   If a transaction is committed it becomes persistent
     *   Cannot be lost or undone
     *   Ensured by use of database transaction logs
 *   _Durability example:_
@@ -142,7 +142,7 @@
     *   Microsoft SQL Server, Oracle Database, PostgreSQL, FirebirdSQL, …
 *     All of the above servers support ACID transactions
     *   MySQL can also run in ACID mode (InnoDB)
-*     Most cloud databases are transactional as well
+*     Most cloud databases are transactional
     *   Amazon SimpleDB, AppEngine Datastore, Azure Tables, MongoDB, …
 
 <!-- section start -->
@@ -184,7 +184,7 @@ CREATE TABLE Accounts(
   Balance decimal NOT NULL)
 ```
 
-<!-- attr: {style: 'font-size: 36px'} -->
+<!-- attr: {style: 'font-size: 0.8em'} -->
 #   Transactions in SQL Server: Example
 *   A transaction for transferring money:
 
