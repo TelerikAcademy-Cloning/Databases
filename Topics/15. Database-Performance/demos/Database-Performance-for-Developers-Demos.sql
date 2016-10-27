@@ -11,6 +11,14 @@ GO
 USE PerformanceDB
 GO
 
+
+---------------------------------------------------------------------
+-- Set statistics ON, to track the query performance
+---------------------------------------------------------------------
+
+SET STATISTICS TIME ON;
+SET STATISTICS IO ON;
+
 ---------------------------------------------------------------------
 -- Create table Authors and populate 100 000 rows in it
 ---------------------------------------------------------------------
@@ -41,7 +49,7 @@ END
 SELECT COUNT(*) FROM Authors
 
 ---------------------------------------------------------------------
--- Create table Messages and populate 1 000 000 rows in it
+-- Create table Messages and populate 5 120 000 rows in it
 ---------------------------------------------------------------------
 
 CREATE TABLE Messages(
@@ -61,10 +69,10 @@ DECLARE @AuthorsCount int = (SELECT COUNT(*) FROM Authors)
 DECLARE @RowCount int = 10000
 WHILE @RowCount > 0
 BEGIN
-  DECLARE @Text nvarchar(100) = 
+  DECLARE @Text nvarchar(100) =
     'Text ' + CONVERT(nvarchar(100), @RowCount) + ': ' +
     CONVERT(nvarchar(100), newid())
-  DECLARE @Date datetime = 
+  DECLARE @Date datetime =
 	DATEADD(month, CONVERT(varbinary, newid()) % (50 * 12), getdate())
   DECLARE @Price int = RAND() * 1000000
   DECLARE @Author int = 1 + (RAND() * @AuthorsCount)
@@ -256,6 +264,7 @@ WHERE MsgText LIKE 'Text 9993%'
 
 DROP INDEX IDX_Messages_MsgText ON Messages
 
+select SERVERPROPERTY('IsFullTextInstalled');
 ---------------------------------------------------------------------
 -- Add full-text index and search by indexed text column (left LIKE)
 ---------------------------------------------------------------------
@@ -263,15 +272,19 @@ DROP INDEX IDX_Messages_MsgText ON Messages
 CREATE FULLTEXT CATALOG MessagesFullTextCatalog
 WITH ACCENT_SENSITIVITY = OFF
 
-CREATE FULLTEXT INDEX ON Messages(MsgText)
+CREATE FULLTEXT INDEX ON Messages(MsgText language 1033)
 KEY INDEX PK_Messages_MsgId
 ON MessagesFullTextCatalog
 WITH CHANGE_TRACKING AUTO
 
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 
-SELECT * FROM Messages
+--Wait for a few seconds after the full index is being created to see how it is slowly building the dictionary to work with
+SELECT COUNT(*) FROM Messages
 WHERE CONTAINS(MsgText, '123')
+
+--SELECT * FROM Messages
+--WHERE MsgText like'%123%'
 
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 
@@ -289,7 +302,7 @@ DROP FULLTEXT CATALOG MessagesFullTextCatalog
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
 
 SELECT m.MsgId, m.MsgText, m.MsgDate, m.MsgPrice, a.AuthorName
-FROM dbo.Messages m JOIN dbo.Authors a 
+FROM dbo.Messages m JOIN dbo.Authors a
   ON m.AuthorId = a.AuthorId
 AND m.MsgDate BETWEEN '1-Jan-2015' AND '28-Feb-2015'
 AND m.MsgPrice < 100000
@@ -308,11 +321,11 @@ CREATE TABLE CacheOfMsgCheapJan2015
 BEGIN TRANSACTION
 DELETE FROM CacheOfMsgCheapJan2015
 INSERT INTO CacheOfMsgCheapJan2015
-SELECT m.MsgId, m.MsgText, m.MsgDate, m.MsgPrice, a.AuthorName
-FROM dbo.Messages m JOIN dbo.Authors a 
-  ON m.AuthorId = a.AuthorId
-AND m.MsgDate BETWEEN '1-Jan-2015' AND '31-Jan-2015'
-AND m.MsgPrice < 100000
+	SELECT m.MsgId, m.MsgText, m.MsgDate, m.MsgPrice, a.AuthorName
+	FROM dbo.Messages m JOIN dbo.Authors a
+	  ON m.AuthorId = a.AuthorId
+	AND m.MsgDate BETWEEN '1-Jan-2015' AND '31-Jan-2015'
+	AND m.MsgPrice < 100000
 COMMIT
 
 CHECKPOINT; DBCC DROPCLEANBUFFERS; -- Empty the SQL Server cache
