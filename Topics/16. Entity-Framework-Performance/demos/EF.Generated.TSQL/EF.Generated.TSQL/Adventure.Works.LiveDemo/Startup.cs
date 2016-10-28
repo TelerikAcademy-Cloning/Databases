@@ -42,7 +42,7 @@ namespace Adventure.Works.LiveDemo
                 {
                     if (person.LastName == lastName)
                     {
-                        Console.WriteLine(person.BusinessEntityID);
+                        Console.WriteLine(person.EmailAddresses.First().EmailAddress1);
                     }
                 }
             }
@@ -78,7 +78,7 @@ namespace Adventure.Works.LiveDemo
             using (var dbContext = new AdventureWorks2014Entities())
             {
                 Console.WriteLine("Enter last name to search: ");
-                var lastName = Console.ReadLine();
+                var lastName = "Gonzalez";
 
                 var peopleBusinessEntityIDs = dbContext.People
                     .Where(x => x.LastName == lastName)
@@ -100,7 +100,7 @@ namespace Adventure.Works.LiveDemo
             using (var dbContext = new AdventureWorks2014Entities())
             {
                 Console.WriteLine("Enter last name to search email addresses: ");
-                var lastName = Console.ReadLine();
+                var lastName = "Gonzalez";
 
                 var people = dbContext.People
                     .Where(x => x.LastName == lastName)
@@ -125,7 +125,7 @@ namespace Adventure.Works.LiveDemo
             using (var dbContext = new AdventureWorks2014Entities())
             {
                 Console.WriteLine("Enter last name to search email addresses: ");
-                var lastName = Console.ReadLine();
+                var lastName = "Gonzalez";
 
                 var people = dbContext.People
                     .Include(x => x.EmailAddresses)
@@ -157,24 +157,24 @@ namespace Adventure.Works.LiveDemo
                 Console.WriteLine("Enter last name to search email addresses: ");
                 var lastName = Console.ReadLine();
 
-                var emails = from person in dbContext.People
-                             join emailAddress in dbContext.EmailAddresses
-                             on person.BusinessEntityID equals emailAddress.BusinessEntityID
-                             where person.LastName == lastName
-                             select emailAddress.EmailAddress1;
+                //var emails = from person in dbContext.People
+                //             join emailAddress in dbContext.EmailAddresses
+                //             on person.BusinessEntityID equals emailAddress.BusinessEntityID
+                //             where person.LastName == lastName
+                //             select emailAddress.EmailAddress1;
 
                 //var emails = dbContext.People
                 //    .Where(x => x.LastName == lastName)
                 //    .SelectMany(x => x.EmailAddresses)
                 //    .Select(x => x.EmailAddress1);
 
-                //var emails =
-                //    dbContext.People
-                //    .Where(x => x.LastName == lastName)
-                //    .Join(dbContext.EmailAddresses,
-                //          l => l.BusinessEntityID,
-                //          r => r.BusinessEntityID,
-                //          (l, r) => r.EmailAddress1);
+                var emails =
+                    dbContext.People
+                    .Where(x => x.LastName == lastName)
+                    .Join(dbContext.EmailAddresses,
+                          l => l.BusinessEntityID,
+                          r => r.BusinessEntityID,
+                          (l, r) =>  r.EmailAddress1 );
 
 
                 foreach (var email in emails)
