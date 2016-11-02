@@ -1,10 +1,13 @@
 ﻿using System;
-using System.Data.Objects;
+using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TransactionsInEF
+namespace _4.Transactions_in_EF6
 {
-    class NorthwindTransactions
+    class NorthwindTransactionsEF6
     {
         static void Main()
         {
@@ -41,14 +44,14 @@ namespace TransactionsInEF
                 CategoryName = "New Category",
                 Description = "New category, just for testing"
             };
-            context.Categories.AddObject(newCategory);
+            context.Categories.Add(newCategory);
 
             // Add an invalid new category
             Category newCategoryLongName = new Category()
             {
                 CategoryName = "New Category Loooooooong Name",
             };
-            context.Categories.AddObject(newCategoryLongName);
+            context.Categories.Add(newCategoryLongName);
 
             // The entire transaction will fail due to
             // insertion failure for the second category
@@ -63,7 +66,7 @@ namespace TransactionsInEF
                 CategoryName = "New Category",
                 Description = "New category, just for testing"
             };
-            context.Categories.AddObject(newCategory);
+            context.Categories.Add(newCategory);
             context.SaveChanges();
 
             // This context works in different transaction
@@ -80,16 +83,40 @@ namespace TransactionsInEF
             // Categories.CategoryName has ConcurrencyMode=Fixed
             newCategory.CategoryName = newCategory.CategoryName + " 3";
 
-            // Uncomment for testing
-            //try
+            // Database wins
+            bool isFailed;
+            
+            do
+            {
+                isFailed = false;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    isFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (isFailed);
+
+            // Client wins
+            //bool isFailed;
+
+            //do
             //{
-                context.SaveChanges();
-            //}
-            //catch
-            //{
-            //    context.Refresh(RefreshMode.ClientWins, newCategory);
-            //    context.SaveChanges();
-            //}
+            //    isFailed = false;
+            //    try
+            //    {
+            //        context.SaveChanges();
+            //    }
+            //    catch (DbUpdateConcurrencyException ex)
+            //    {
+            //        isFailed = true;
+            //        var entry = ex.Entries.Single();
+            //        entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+            //    }
+            //} while (isFailed);
         }
     }
 }
