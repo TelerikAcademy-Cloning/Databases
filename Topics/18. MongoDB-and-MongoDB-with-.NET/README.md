@@ -213,27 +213,26 @@ await collection.DeleteManyAsync(sh => deleteCondition(sh));
 
 # Updating in MongoDB
 
-- The update is stranger than the other queries:
-  1.  Create a find filter
+1.  Create a find filter
 
-    ```cs
-    var filter = x => x.SecretIdentity == "Dick Grayson";
-    ```
+```cs
+var filter = x => x.SecretIdentity == "Dick Grayson";
+```
 
-  2.  Create an update definition
+2.  Create an update definition
 
-    ```cs
-    var updateDefinition = new UpdateDefinitionBuilder<Superhero>()
-      .Set("Secret", "Nightwing")
-    ```
+```cs
+var updateDefinition = new UpdateDefinitionBuilder<Superhero>()
+  .Set("Secret", "Nightwing")
+```
 
-  3.  Update the values in the database
+3.  Update the values in the database
 
-    ```cs
-    collection.UpdateOne(filter, updateDefinition);
-    await collection.UpdateOneAsync(filter, updateDefinition);
-    await collection.UpdateManyAsync(filter, updateDefinition);
-    ```
+```cs
+collection.UpdateOne(filter, updateDefinition);
+await collection.UpdateOneAsync(filter, updateDefinition);
+await collection.UpdateManyAsync(filter, updateDefinition);
+```
 
 <!-- attr: {class: "slide-section", showInPresentation: true} -->
 <!-- # Updating documents with MongoDB driver -->
