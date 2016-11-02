@@ -118,7 +118,7 @@ var db = client.GetDatabase("books");
 
 <!-- section start -->
 
-<!-- attr: {class: 'slide-section'} -->
+<!-- attr: {class: 'slide-section', hasScriptWrapper: true} -->
 #   MongoDB Driver APIs: Insert, Read, Update, Remove
 ##  Working with MongoDB from C#
 
@@ -132,44 +132,37 @@ var db = client.GetDatabase("books");
     - Can be used synchronous as well, but it is not recommended
 
 
+<!-- attr: {style: "font-size: 0.9em"} -->
 #   MongoDB Driver APIs: Find
 
 - Getting documents from MongoDB:
   - Use the `FindSync()` and `FindAsync()` methods
     - They expect a delegate as a parameter
   - _Example:_
-    - Synchronous:
 
-    ```cs
-    var superheroes = superheroesCollection.FindSync((x) => true);
-    var flyingSuperheroes = superheroesCollection.FindSync(
-      x =>
-        x.Powers.Any(
-          power =>
-            power.Name.ToLower().Contains("flying")));
-    ```
-
-    - Asynchronous:
-    ```cs
-    var superheroes = await superheroesCollection.FindAsync((x) => true);
-    var flyingSuperheroes = await superheroesCollection.FindAsync(
-      x =>
-        x.Powers.Any(
-          power =>
-            power.Name.ToLower().Contains("flying")));
-    ```
+```cs
+//  Synchronous
+var superheroes = superheroesCollection.FindSync((x) => true);
+var flyingSuperheroes = superheroesCollection.FindSync(
+  x =>
+    x.Powers.Any(
+      power =>
+        power.Name.ToLower().Contains("flying")));
+//  Asynchronous
+var superheroes = await superheroesCollection.FindAsync((x) => true);  
+```
 
 <!-- attr: {class: "slide-section", showInPresentation: true} -->
 <!-- # Reading from MongoDB -->
 ##  Demo
 
-#   MongoDB Driver APIs: Insert
+#   Inserting in MongoDB
 
 - Inserting an object with MongoDB driver can be done either asynchronous or synchronous:
   - Synchronous:
 
     ```cs
-        this.Collection.InsertOne(entity);
+    this.Collection.InsertOne(entity);
     ```
 
   - Asynchronous (recommended):
@@ -178,9 +171,9 @@ var db = client.GetDatabase("books");
     await this.Collection.InsertOneAsync(entity)
     ```
 
-#   MongoDB Driver APIs: Insert
+#   Batch Insert in MongoDB
 
-- The MongoDB driver also supports batch insert
+- The MongoDB also supports batch insert
   - i.e. add a collection of objects to a collection, all at once, with a single query:
   - Synchronous:
 
@@ -204,20 +197,21 @@ var db = client.GetDatabase("books");
 
 - The MongoDB driver supports delete as well:
 
-    ```cs
-    //  Synchronous
-    collection.DeleteOne(sh => deleteCondition(sh));
-    collection.DeleteMany(sh => deleteCondition(sh));
-    //  Asynchronous
-    await collection.DeleteOneAsync(sh => deleteCondition(sh));
-    await collection.DeleteManyAsync(sh => deleteCondition(sh));
-    ```
+```cs
+//  Synchronous
+collection.DeleteOne(sh => deleteCondition(sh));
+collection.DeleteMany(sh => deleteCondition(sh));
+
+//  Asynchronous
+await collection.DeleteOneAsync(sh => deleteCondition(sh));
+await collection.DeleteManyAsync(sh => deleteCondition(sh));
+```
 
 <!-- attr: {class: "slide-section", showInPresentation: true} -->
 <!-- # Deleting documents with MongoDB driver -->
 ##  Demo
 
-# Updating with MongoDB Driver
+# Updating in MongoDB
 
 - The update is stranger than the other queries:
   1.  Create a find filter
