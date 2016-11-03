@@ -10,7 +10,6 @@ namespace StudentSystem.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Data.Entity;
     using Data;
     using Data.Repositories;
 

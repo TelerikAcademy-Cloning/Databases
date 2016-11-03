@@ -19,7 +19,7 @@
         {
             get { return this.DbSet; }
         }
-        
+
 
         public T GetById(object id)
         {
@@ -41,21 +41,21 @@
             return this.GetAll<T1, T>(filterExpression, sortExpression, null);
         }
 
-        public IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T,T1>> sortExpression, Expression<Func<T, T2>> selectExpression)
+        public IEnumerable<T2> GetAll<T1, T2>(Expression<Func<T, bool>> filterExpression, Expression<Func<T, T1>> sortExpression, Expression<Func<T, T2>> selectExpression)
         {
             IQueryable<T> result = this.DbSet;
 
-            if(filterExpression != null)
+            if (filterExpression != null)
             {
-                result =  result.Where(filterExpression);
+                result = result.Where(filterExpression);
             }
 
-            if(sortExpression != null)
+            if (sortExpression != null)
             {
                 result = result.OrderBy(sortExpression);
             }
 
-            if(selectExpression != null)
+            if (selectExpression != null)
             {
                 return result.Select(selectExpression).ToList();
             }

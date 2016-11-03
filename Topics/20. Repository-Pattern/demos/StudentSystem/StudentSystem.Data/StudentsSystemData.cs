@@ -11,7 +11,7 @@
 
         public StudentsSystemData(IStudentSystemDbContext context)
         {
-            if(context == null)
+            if (context == null)
             {
                 throw new ArgumentException();
             }
@@ -19,7 +19,6 @@
             this.context = context;
         }
 
-        
         public void Commit()
         {
             this.context.SaveChanges();

@@ -27,7 +27,7 @@ namespace StudentSystem.Web.Controllers
 
         public ActionResult Index()
         {
-            var students = this.studentsRepo.All.Where(x=>this.homeworkRepo.All.FirstOrDefault().Student.FirstName == (x.FirstName));
+            var students = this.studentsRepo.All.Where(x => this.homeworkRepo.All.FirstOrDefault().Student.FirstName == (x.FirstName));
 
             return View(students);
         }
@@ -41,7 +41,7 @@ namespace StudentSystem.Web.Controllers
                 unitOfWork.Commit();
             }
 
-            return this.Redirect("Details/" + studentToAdd.Id);
+            return this.Redirect("Details/" + studentToAdd.StudentIdentification);
 
         }
 

@@ -1,32 +1,73 @@
 namespace StudentSystem.Data.Migrations
 {
+    using StudentSystem.Models;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<StudentSystem.Data.StudentSystemDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<StudentSystemDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "StudentSystem.Data.StudentSystemDbContext";
         }
 
-        protected override void Seed(StudentSystem.Data.StudentSystemDbContext context)
+        protected override void Seed(StudentSystemDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.SeedCourses(context);
+            this.SeedStudents(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void SeedStudents(StudentSystemDbContext context)
+        {
+            if (context.Students.Any())
+            {
+                return;
+            }
+
+            context.Students.Add(new Student
+            {
+                FirstName = "Evlogi",
+                LastName = "Hristov",
+                Level = 1
+            });
+
+            context.Students.Add(new Student
+            {
+                FirstName = "Ivaylo",
+                LastName = "Kenov",
+                Level = 2,
+            });
+
+            context.Students.Add(new Student
+            {
+                FirstName = "Doncho",
+                LastName = "Minkov",
+                Level = 3
+            });
+
+            context.Students.Add(new Student
+            {
+                FirstName = "Nikolay",
+                LastName = "Kostov",
+                Level = 9999
+            });
+        }
+
+        private void SeedCourses(StudentSystemDbContext context)
+        {
+            if (context.Courses.Any())
+            {
+                return;
+            }
+
+            context.Courses.Add(new Course
+            {
+                Name = "Seeded course",
+                Description = "Initial course for testing"
+            });
         }
     }
 }

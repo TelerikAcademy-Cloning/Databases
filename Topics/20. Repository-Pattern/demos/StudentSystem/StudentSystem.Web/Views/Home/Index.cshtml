@@ -10,4 +10,14 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
 </div>
 
-<h1>@Model.Count()</h1>
+@foreach (var student in Model)
+{
+    <div class="row">
+        <div class="col-md-6">
+            @student.FirstName
+        </div>
+        <div class="col-md-6">
+            @student.LastName
+        </div>
+    </div>
+}
