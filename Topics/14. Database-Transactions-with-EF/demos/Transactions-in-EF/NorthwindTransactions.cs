@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Objects;
 using System.Linq;
 
 namespace TransactionsInEF
@@ -78,7 +79,17 @@ namespace TransactionsInEF
             // This will cause OptimisticConcurrencyException if
             // Categories.CategoryName has ConcurrencyMode=Fixed
             newCategory.CategoryName = newCategory.CategoryName + " 3";
-            context.SaveChanges();
+
+            // Uncomment for testing
+            //try
+            //{
+                context.SaveChanges();
+            //}
+            //catch
+            //{
+            //    context.Refresh(RefreshMode.ClientWins, newCategory);
+            //    context.SaveChanges();
+            //}
         }
     }
 }

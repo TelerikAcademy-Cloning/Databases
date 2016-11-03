@@ -110,7 +110,7 @@ var db = client.GetDatabase("books");
         *   The most commonly used
     *   MongoVUE & UMongo
         *   Provide UI to view, edit are remove DB documents
-        *   Kind of slappy
+        *   Kind of sloppy
 
 <!-- attr: {class: 'slide-section'} -->
 #   MongoDB Viewers
@@ -118,9 +118,125 @@ var db = client.GetDatabase("books");
 
 <!-- section start -->
 
-<!-- attr: {class: 'slide-section'} -->
+<!-- attr: {class: 'slide-section', hasScriptWrapper: true} -->
 #   MongoDB Driver APIs: Insert, Read, Update, Remove
-##  [Demo](http://)
+##  Working with MongoDB from C#
+
+# MongoDB Driver APIs
+
+- The MongoDB driver provides all necessary functionality for querying the database:
+  - All CRUD operations (Create, READ, Update, Delete)
+  - Some additional functionalities for easier working with database
+    - Like conditional search, delete and update
+  - All queries are asynchronous
+    - Can be used synchronous as well, but it is not recommended
+
+
+<!-- attr: {style: "font-size: 0.9em"} -->
+#   MongoDB Driver APIs: Find
+
+- Getting documents from MongoDB:
+  - Use the `FindSync()` and `FindAsync()` methods
+    - They expect a delegate as a parameter
+  - _Example:_
+
+```cs
+//  Synchronous
+var superheroes = superheroesCollection.FindSync((x) => true);
+var flyingSuperheroes = superheroesCollection.FindSync(
+  x =>
+    x.Powers.Any(
+      power =>
+        power.Name.ToLower().Contains("flying")));
+//  Asynchronous
+var superheroes = await superheroesCollection.FindAsync((x) => true);  
+```
+
+<!-- attr: {class: "slide-section", showInPresentation: true} -->
+<!-- # Reading from MongoDB -->
+##  Demo
+
+#   Inserting in MongoDB
+
+- Inserting an object with MongoDB driver can be done either asynchronous or synchronous:
+  - Synchronous:
+
+    ```cs
+    this.Collection.InsertOne(entity);
+    ```
+
+  - Asynchronous (recommended):
+
+    ```cs
+    await this.Collection.InsertOneAsync(entity)
+    ```
+
+#   Batch Insert in MongoDB
+
+- The MongoDB also supports batch insert
+  - i.e. add a collection of objects to a collection, all at once, with a single query:
+  - Synchronous:
+
+    ```cs
+    IEnumerable<Superheroes> superheroes = ...;
+        this.Collection.InsertMany(superheroes);
+    ```
+
+  - Asynchronous (recommended):
+
+    ```cs
+    IEnumerable<Superheroes> superheroes = ...;
+    await this.Collection.InsertManyAsync(superheroes)
+    ```
+
+<!-- attr: {class: "slide-section", showInPresentation: true} -->
+<!-- # Inserting documents with MongoDB driver -->
+##  Demo
+
+# Deleting with MongoDB Driver
+
+- The MongoDB driver supports delete as well:
+
+```cs
+//  Synchronous
+collection.DeleteOne(sh => deleteCondition(sh));
+collection.DeleteMany(sh => deleteCondition(sh));
+
+//  Asynchronous
+await collection.DeleteOneAsync(sh => deleteCondition(sh));
+await collection.DeleteManyAsync(sh => deleteCondition(sh));
+```
+
+<!-- attr: {class: "slide-section", showInPresentation: true} -->
+<!-- # Deleting documents with MongoDB driver -->
+##  Demo
+
+# Updating in MongoDB
+
+1.  Create a find filter
+
+```cs
+var filter = x => x.SecretIdentity == "Dick Grayson";
+```
+
+2.  Create an update definition
+
+```cs
+var updateDefinition = new UpdateDefinitionBuilder<Superhero>()
+  .Set("Secret", "Nightwing")
+```
+
+3.  Update the values in the database
+
+```cs
+collection.UpdateOne(filter, updateDefinition);
+await collection.UpdateOneAsync(filter, updateDefinition);
+await collection.UpdateManyAsync(filter, updateDefinition);
+```
+
+<!-- attr: {class: "slide-section", showInPresentation: true} -->
+<!-- # Updating documents with MongoDB driver -->
+##  Demo
 
 <!-- section start -->
 
