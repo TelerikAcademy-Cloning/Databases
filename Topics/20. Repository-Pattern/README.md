@@ -314,16 +314,6 @@ Maintains a list of objects affected by a business transaction and coordinates t
 
 <!-- attr: {hasScriptWrapper:true} -->
 
-# Unit Of Work
-- Create an interface
-
-```cs
-public interface IUnitOfWork
-{
-    void Commit();
-}
-```
-<!-- <img class="slide-image" showInPresentation="true"  src="imgs/unit-of-work.png" style="height:40%; left:30%; top:30 border-radius: 10px;" /> -->
 
 # Unit Of Work
 - Create an concrete implementation
@@ -333,7 +323,7 @@ public class UnitOfWork : IUnitOfWork
 {
     private IDbContext context;
 
-    public StudentsSystemData(IDbContext context)
+    public UnitOfWork(IDbContext context)
     {
         if(context == null)
         {
@@ -359,7 +349,7 @@ public interface IUnitOfWork
 {
     IUserRepository Contests { get; }
 
-    ITaskRepository { get; }
+    ITaskRepository Tasks { get; }
 
     // and so on...
 }
