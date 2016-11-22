@@ -25,11 +25,11 @@
 
         public void Import()
         {
-            var friendships = this.Deserialize<FriendshipXmlModel>("XmlFiles/Friendships.xml", "Friendships");
+            var friendships = this.Deserialize<FriendshipXmlModel>("XmlFiles/Friendships-Test.xml", "Friendships");
             this.ProcessFrienships(friendships);
             this.textWrite.WriteLine();
 
-            var posts = this.Deserialize<PostXmlModel>("XmlFiles/Posts.xml", "Posts");
+            var posts = this.Deserialize<PostXmlModel>("XmlFiles/Posts-Test.xml", "Posts");
             this.ProcessPosts(posts);
             this.textWrite.WriteLine();
         }
